@@ -1,0 +1,14 @@
+{
+  "name": "dynamixel-server",
+  "version": "0.0.0",
+  "description": "Backend for dynamixel project",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.10.2",
+    "express": "~4.11.1",
+    "net": "^1.0.2"
+  }
+}
