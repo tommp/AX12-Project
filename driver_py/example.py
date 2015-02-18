@@ -44,6 +44,7 @@ def main(settings):
 
         # Set up the servos
         for actuator in net.get_dynamixels():
+            actuator._set_to_joint_mode()
             actuator.moving_speed = 50
             actuator.torque_enable = True
             actuator.torque_limit = 800 

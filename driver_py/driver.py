@@ -6,14 +6,16 @@ import optparse
 import yaml
 
 import socket
-import threading
+import json
+import time
 
 
 def main(settings):
 
-	SERVER_IP = '78.91.7.139'
+	SERVER_IP = '78.91.5.36'
 	SERVER_PORT = 9001
 	SERVVER_CONN = (SERVER_IP, SERVER_PORT)
+
 	# Establish a serial connection to the dynamixel network.
 	# This usually requires a USB2Dynamixel
 	serial = dynamixel.SerialStream(port=settings['port'],
@@ -35,79 +37,47 @@ def main(settings):
 
 	try:
 		clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		clientsocket.bind(SERVVER_CONN)
-		clientsocket.send("Dynamixel controller connected!")
-
-		try:
-			remote_controller = threading.Thread(None, remote_handler)
-			remote_controller.daemon = True
-			remote_controller.start()
-		except:
-			print("Failed to initialize remote_controller")
+		clientsocket.connect(SERVVER_CONN)
+		clientsocket.send("Connection established!")
 	except:
 		print("Failed to connect to remote server")
 
 	for actuator in net.get_dynamixels():
-		actuator.cw_angle_limit = 0
-		actuator.ccw_angle_limit = 0
+		actuator._set_to_wheel_mode()
 		actuator.moving_speed = 1024
-		actuator.torque_enable = True
-		actuator.torque_limit = 800 
-		actuator.max_torque = 800
-
+		actuator.torque_enable = False
+		actuator.torque_limit = 900
+		actuator.max_torque = 900
+		actuator.goal_position = 512
+		
 	net.synchronize()
-
-	command_lock = threading.Semaphore()
 
 	#Main loop
 	while True:
-		command = raw_input("Type command: ")
-
-		command_lock.acquire()
-		process_command(command)
-		command_lock.release()
-
-def remote_handler():
-	while True:
-		command = clientsocket.recv(64)
-
-		command_lock.acquire()
-		process_command_remote(command)
-		command_lock.release()
-
-def process_command(command):
-	if command in ['r', 'R', 'run', 'RUN']:
-		for actuator in net.get_dynamixels():
-			actuator.moving_speed = 500
-	elif command in ['s', 'S', 'stop', 'STOP']:
-		for actuator in net.get_dynamixels():
-			actuator.moving_speed = 1024
-	elif command in ['q', 'Q', 'quit', 'QUIT']:
-		for actuator in net.get_dynamixels():
-			print("Recieved local quit command, shutting down local and remote connection!")
+		json_data = clientsocket.recv(4096)
+		if len(json_data) > 0:
 			try:
-				clientsocket.send("Recieved local quit command, shutting down local and remote connection!")
-				clientsocket.close()
-			except:
-				print("Could not close remote connections")
-			actuator.moving_speed = 1024
-			net.synchronize()
-			exit(0)
-	net.synchronize()
+				data = json.loads(json_data)
 
-def process_command_remote(command):
-	if command in ['r', 'R', 'run', 'RUN']:
-		for actuator in net.get_dynamixels():
-			actuator.moving_speed = 500
-	elif command in ['s', 'S', 'stop', 'STOP']:
-		for actuator in net.get_dynamixels():
-			actuator.moving_speed = 1024
-	elif command in ['q', 'Q', 'quit', 'QUIT']:
-		for actuator in net.get_dynamixels():
-			clientsocket.send("Recieved quit command, shutting down remote connection!")
-			clientsocket.close()
-			exit(0)
-	net.synchronize()
+				if data["action"] == "info":
+					objects = data["objects"]
+					return_status = {}
+					for dynamo in objects:
+						return_status[dynamo["id"]] = net[int(dynamo["id"])]._return_json_status()
+					clientsocket.send(json.dumps(return_status))
+				elif data["action"] == "move":
+					objects = data["objects"]
+					for dynamo in objects:
+						print str(dynamo["id"]) + " - " + str(dynamo["speed"])
+						net[int(dynamo["id"])].moving_speed = int(dynamo["speed"])
+						net.synchronize()
+					clientsocket.send("Success")
+				else:
+					clientsocket.send("Error: Wrong protocol format!")
+
+			except ValueError:
+				print "Unable to parse json on string: " + json_data
+				clientsocket.send("A valueerror occured!!!")
 
 
 def validateInput(userInput, rangeMin, rangeMax):
