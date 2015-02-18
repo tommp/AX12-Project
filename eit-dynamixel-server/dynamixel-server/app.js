@@ -7,6 +7,8 @@ var router = require('./routes/users');
 var httpPort = 8080;
 var socketPort = 9001;
 var deviceConnection;
+var deviceConnections = {};
+var connection_id = 0;
 
 app.use(bodyParser.json());
 
@@ -21,5 +23,10 @@ app.listen(httpPort, function(){
 socketServer.listen(socketPort, function(){
     console.log("Socket server listening on http://localhost:" + socketPort);
 });
+
+function newID(){
+    connection_id += 1;
+    return connection_id;
+}
 
 module.exports = app;

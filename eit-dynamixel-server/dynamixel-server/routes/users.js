@@ -17,8 +17,13 @@ router.post('/', function(req, res){
     }
     else{
         res.status(202);
-        connection.write("Hello from http\n");
-        res.send("Message sent to device")
+        connection.write(JSON.stringify(req.body));
+        connection.on('data', function(data){
+            res.end(data);
+        });
+        setTimeout(function(){
+            res.end("No data from device");
+        }, 2000);
     }
 });
 module.exports = router;
