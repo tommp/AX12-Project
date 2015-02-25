@@ -13,9 +13,13 @@ class ErrorLogger:
 	def __init__(self, logfile):
 		try:
 			self.errorlog = open(logfile, 'a')
-			print("Date: " + time.strftime("%d/%m/%Y") + "\nTime: " + time.strftime("%H:%M:%S") + "\nErrorlog initialized\n")
+			print("Date: " + time.strftime("%d/%m/%Y") + 
+				"\nTime: " + time.strftime("%H:%M:%S") + 
+				"\nErrorlog initialized\n")
 		except:
-			print("Date: " + time.strftime("%d/%m/%Y") + "\nTime: " + time.strftime("%H:%M:%S") + "\nFailed to open errorlog!\n")
+			print("Date: " + time.strftime("%d/%m/%Y") + 
+				"\nTime: " + time.strftime("%H:%M:%S") + 
+				"\nFailed to open errorlog!\n")
 			self.errorlog = 0
 
 	def write(self, string):
@@ -123,13 +127,16 @@ def main(settings):
 		
 	net.synchronize()
 
-	#MAIN LOOP END##############################################################################################
+	#MAIN LOOP START##############################################################################################
 	############################################################################################################
 	while True:
+		#CHecks if the connection was established, if not allows manual mode locally
 		if connected:
+			#Reads data from socket
 			json_data = clientsocket.recv(4096)
 			if len(json_data) > 0:
 				try:
+					#Loads the data into a (json)dict
 					data = json.loads(json_data)
 					if data["action"] == "info":
 						objects = data["actuators"]
@@ -155,7 +162,9 @@ def main(settings):
 									new_speed = 1024
 
 							print str(dynamo["id"]) + " - " + str(dynamo["speed"])
+							#Set dynamixel register data to send
 							net[int(dynamo["id"])].moving_speed = new_speed
+							#Send data to dynamixels
 							net.synchronize()
 						clientsocket.send("Success")
 					else:
@@ -166,6 +175,7 @@ def main(settings):
 							"\nTime: " + time.strftime("%H:%M:%S") + 
 							"\nError, wrong protocol format")
 						clientsocket.send("Error: Wrong protocol format!")
+				#Handles potential valuerrors in the socket data
 				except ValueError:
 					try:
 						errorlog.write("Date: " + time.strftime("%d/%m/%Y") + "\nTime: " + 
@@ -184,6 +194,7 @@ def main(settings):
 							"\nRecieved data was corrupt!")
 
 					clientsocket.send("A valueerror occured!!!")
+		#Manual menu
 		else:
 			data = raw_input("Type command (help for options): ")
 			if data in ['r', 'R', 'restart', 'reset']:
