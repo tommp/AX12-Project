@@ -6,14 +6,15 @@ import jgamepad.listeners.ButtonPressedListener;
 
 public class Main {
 
-    private static String URL = "http://vsop.online.ntnu.no:8080";
+    private static String URL = "http://78.91.7.89:9002";
+    private static String DEVICE_NAME = "Ruls";
 
     private static int ANALOG_MAX_VALUE = 24078;
 
     private static int lastAnalogValue;
 
     public static void main(String[] args){
-        Connection connection = new Connection(URL);
+        Connection connection = new Connection(URL, DEVICE_NAME);
         Controller.dllPath = System.getProperty("user.dir") + "\\libs";
         Controller controller = new Controller(0, 50);
 

@@ -8,15 +8,17 @@ import java.net.URL;
 public class Connection {
 
     private String url;
+    private String deviceID;
 
-    public Connection(String url){
+    public Connection(String url, String deviceName){
         this.url = url;
+
+        deviceID = getDeviceID(sendGetMessage("device/" + deviceName, false));
     }
 
     public int sendPostMessage(String message){
         try {
-            HttpURLConnection httpConnection = createConnection();
-            httpConnection.setRequestMethod("POST");
+            HttpURLConnection httpConnection = createPostConnection();
             httpConnection.setDoOutput(true);
             DataOutputStream outputStream = new DataOutputStream(httpConnection.getOutputStream());
             outputStream.writeBytes(message);
@@ -35,6 +37,27 @@ public class Connection {
         } catch (IOException e) {
             e.printStackTrace();
             return -1;
+        }
+    }
+
+    public String sendGetMessage(String param, boolean deviceSpecific){
+        try {
+            HttpURLConnection httpConnection = createGetConnection(param, deviceSpecific);
+            //httpConnection.setDoOutput(true);
+
+            int responseCode = httpConnection.getResponseCode();
+
+            System.out.println("Sent GET message: " + param);
+            System.out.println("Response code: " + responseCode);
+
+            String response = getResponseMessage(httpConnection);
+
+            System.out.println("Response message: " + response);
+
+            return response;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "";
         }
     }
 
@@ -60,14 +83,36 @@ public class Connection {
         return  response.toString();
     }
 
-    private HttpURLConnection createConnection() throws IOException{
-        URL obj = new URL(url);
+    private HttpURLConnection createPostConnection() throws IOException{
+        URL obj = new URL(url + "/" + deviceID);
         HttpURLConnection httpConnection = (HttpURLConnection) obj.openConnection();
 
-        //httpConnection.setRequestMethod("POST");
+        httpConnection.setRequestMethod("POST");
         httpConnection.setRequestProperty("User-Agent", "Mozilla/5.0");
         httpConnection.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
         httpConnection.setRequestProperty("Content-Type", "application/json");
         return httpConnection;
+    }
+
+    private HttpURLConnection createGetConnection(String param, boolean deviceSpecific) throws IOException{
+        URL obj;
+        if(deviceSpecific)
+            obj = new URL(url + "/" + deviceID + "/" + param);
+        else
+            obj = new URL(url + "/" + param);
+
+        HttpURLConnection httpConnection = (HttpURLConnection) obj.openConnection();
+
+        httpConnection.setRequestMethod("GET");
+        httpConnection.setRequestProperty("User-Agent", "Mozilla/5.0");
+        httpConnection.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+        //httpConnection.setRequestProperty("Content-Type", "application/json");
+        return httpConnection;
+    }
+
+    private String getDeviceID(String message){
+        //TODO parse json
+        System.out.println(message);
+        return message;
     }
 }
