@@ -2,13 +2,10 @@ var express = require('express');
 var app = module.exports = express();
 var bodyParser = require('body-parser');
 var net = require('net');
-var socketServer = require('./socket/socket');
+var socketServer = require('./socket/socket').server;
 var router = require('./routes/users');
-var httpPort = 8080;
+var httpPort = 9002;
 var socketPort = 9001;
-var deviceConnection;
-var deviceConnections = {};
-var connection_id = 0;
 
 app.use(bodyParser.json());
 
@@ -17,16 +14,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', router);
 
 app.listen(httpPort, function(){
-    console.log("Http server listening on http://localhost:" + httpPort);
+    console.log("Http server listening on Port: " + httpPort);
 });
 
 socketServer.listen(socketPort, function(){
-    console.log("Socket server listening on http://localhost:" + socketPort);
+    console.log("Socket server listening on Port: " + socketPort);
 });
-
-function newID(){
-    connection_id += 1;
-    return connection_id;
-}
 
 module.exports = app;
