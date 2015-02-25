@@ -18,7 +18,9 @@ class ErrorLogger:
 
 	def write(self, string):
 		if self.errorlog:
-			self.errorlog.write(string)
+			self.errorlog.write("Date: " + time.strftime("%d/%m/%Y") + 
+			"\nTime: " + time.strftime("%H:%M:%S") + 
+			"\n" + string + "\n" + "\n")
 		else:
 			return 0
 	def close_log(self):
@@ -37,6 +39,11 @@ class DeviceController:
 
 	def return_name_packet(self):
 		name_packet={}
-		name_packet["name"] = {self.name}
+		name_packet["name"] = self.name
 		return name_packet
+
+	def printdt(self, string):
+		print ("Date: " + time.strftime("%d/%m/%Y") + 
+			"\nTime: " + time.strftime("%H:%M:%S") + 
+			"\n" + string + "\n")
 
