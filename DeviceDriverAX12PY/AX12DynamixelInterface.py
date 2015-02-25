@@ -181,10 +181,12 @@ def main(settings):
 		else:
 			data = raw_input("Type command (help for options): ")
 			if data in ['r', 'R', 'restart', 'reset']:
-				print("Recieved reset command, shutting down!")
+				print("Recieved reset command, restarting now!")
+				errorlog.close_log()
 				device_controller.restart_program()
 			elif data in ['q', 'Q', 'quit', 'QUIT']:
 				print ("Recieved quit command, shutting down!")
+				errorlog.close_log()
 				sys.exit()
 			elif data in ['rcw']:
 				print ("Recieved run command (clockwise), starting servos!")

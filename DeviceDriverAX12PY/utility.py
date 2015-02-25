@@ -21,6 +21,9 @@ class ErrorLogger:
 			self.errorlog.write(string)
 		else:
 			return 0
+	def close_log(self):
+		if self.errorlog:
+			self.errorlog.close()
 
 	
 
