@@ -4,43 +4,24 @@ import sys
 import subprocess
 import optparse
 import yaml
-
 import socket
 import json
 import time
-
-class ErrorLogger:
-	def __init__(self, logfile):
-		try:
-			self.errorlog = open(logfile, 'a')
-			print("Date: " + time.strftime("%d/%m/%Y") + 
-				"\nTime: " + time.strftime("%H:%M:%S") + 
-				"\nErrorlog initialized\n")
-		except:
-			print("Date: " + time.strftime("%d/%m/%Y") + 
-				"\nTime: " + time.strftime("%H:%M:%S") + 
-				"\nFailed to open errorlog!\n")
-			self.errorlog = 0
-
-	def write(self, string):
-		if self.errorlog:
-			self.errorlog.write(string)
-		else:
-			return 0
-
-def restart_program():
-    python = sys.executable
-    os.execl(python, python, * sys.argv)
-		
+from utility import ErrorLogger, DeviceController
 
 def main(settings):
 
-	SERVER_IP = 'vsop.online.ntnu.no'
+	#SERVER_IP = 'vsop.online.ntnu.no'
+	SERVER_IP = '78.91.7.89'
 	SERVER_PORT = 9001
 	SERVVER_CONN = (SERVER_IP, SERVER_PORT)
 
+	#Name of the device, must be unique on the server
+	DEVICE_NAME = "Ruls"
+
 	#-1 for infinite
-	NUMBER_OF_CONNECTION_ATTEMPTS = 100
+	NUMBER_OF_CONNECTION_ATTEMPTS = 10
+
 	#In seconds
 	DELAY_BETWEEN_ATTEMPTS = 1
 
@@ -54,6 +35,7 @@ def main(settings):
 
 	# Create a errorlogger
 	errorlog = ErrorLogger("Errorlog.txt")
+	device_controller = DeviceController(DEVICE_NAME)
 
 	# Populate our network with dynamixel objects
 	for servoId in settings['servoIds']:
@@ -62,17 +44,11 @@ def main(settings):
 	
 	# Get all the dynamixels in the network
 	if not net.get_dynamixels():
-		errorlog.write("Date: " + time.strftime("%d/%m/%Y") + 
-			"\nTime: " + time.strftime("%H:%M:%S") + 
-			"\nERROR: No Dynamixels Found!\n")
-		print ("Date: " + time.strftime("%d/%m/%Y") + 
-			"\nTime: " + time.strftime("%H:%M:%S") + 
-			"\nNo Dynamixels Found!\n")
+		errorlog.write("ERROR: No Dynamixels Found!\n")
+		device_controller.printdt("No Dynamixels Found!")
 		sys.exit(0)
 	else:
-		print ("Date: " + time.strftime("%d/%m/%Y") + 
-			"\nTime: " + time.strftime("%H:%M:%S") + 
-			"\nDynamixels found, network initialized\n")
+		device_controller.printdt("Dynamixels found, network initialized")
 
 	# Establish server connection##############################################################################
 	connected = False
@@ -81,40 +57,30 @@ def main(settings):
 			try:
 				clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 				clientsocket.connect(SERVVER_CONN)
-				clientsocket.send("Connection established!")
+				clientsocket.send(json.dumps(device_controller.return_name_packet()))
 				connected = True
 			except:
-				errorlog.write("Date: " + time.strftime("%d/%m/%Y") + 
-					"\nTime: " + time.strftime("%H:%M:%S") + 
-					"\nERROR: Failed to connect to remote server, retrying\n")
-				print("Date: " + time.strftime("%d/%m/%Y") + 
-					"\nTime: " + time.strftime("%H:%M:%S") + 
-					"\nERROR: Failed to connect to remote server, retrying\n")
-			sleep(DELAY_BETWEEN_ATTEMPTS)
+				errorlog.write("ERROR: Failed to connect to remote server, retrying")
+				device_controller.printdt("ERROR: Failed to connect to remote server, retrying")
+			time.sleep(DELAY_BETWEEN_ATTEMPTS)
 	else:
 		for i in range(NUMBER_OF_CONNECTION_ATTEMPTS):
 			try:
 				clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 				clientsocket.connect(SERVVER_CONN)
-				clientsocket.send("Connection established!")
+				clientsocket.send(json.dumps(device_controller.return_name_packet()))
 				connected = True
 				break;
 			except:
-				errorlog.write("Date: " + time.strftime("%d/%m/%Y") + 
-					"\nTime: " + time.strftime("%H:%M:%S") + 
-					"\nERROR: Failed to connect to remote server, retrying\n")
-				print("Date: " + time.strftime("%d/%m/%Y") + 
-					"\nTime: " + time.strftime("%H:%M:%S") + 
-					"\nERROR: Failed to connect to remote server, retrying\n")
-			sleep(DELAY_BETWEEN_ATTEMPTS)
+				errorlog.write("ERROR: Failed to connect to remote server, retrying")
+				device_controller.printdt("ERROR: Failed to connect to remote server, retrying")
+			time.sleep(DELAY_BETWEEN_ATTEMPTS)
 
 	if (not connected):
-		errorlog.write("Date: " + time.strftime("%d/%m/%Y") + 
-			"\nTime: " + time.strftime("%H:%M:%S") + 
-			"\nFATAL ERROR: Failed to connect to remote server\n")
-		print("Date: " + time.strftime("%d/%m/%Y") + 
-			"\nTime: " + time.strftime("%H:%M:%S") + 
-			"\nFATAL ERROR: Failed to connect to server, check network settings and upstream connection then restart\n")
+		errorlog.write("FATAL ERROR: Failed to connect to remote server")
+		device_controller.printdt("FATAL ERROR: Failed to connect to server, check network settings and upstream connection then restart")
+	else:
+		device_controller.printdt("Successfully connected to remote server")
 	############################################################################################################
 
 	for actuator in net.get_dynamixels():
@@ -130,7 +96,7 @@ def main(settings):
 	#MAIN LOOP START##############################################################################################
 	############################################################################################################
 	while True:
-		#CHecks if the connection was established, if not allows manual mode locally
+		#Checks if the connection was established, if not allows manual mode locally
 		if connected:
 			#Reads data from socket
 			json_data = clientsocket.recv(4096)
@@ -138,12 +104,14 @@ def main(settings):
 				try:
 					#Loads the data into a (json)dict
 					data = json.loads(json_data)
+					
 					if data["action"] == "info":
 						objects = data["actuators"]
 						return_status = {}
+						return_status["name"] = device_controller.name
 						for dynamo in objects:
 							return_status[dynamo["id"]] = net[int(dynamo["id"])]._return_json_status()
-						print ("Sending info packets")
+						device_controller.printdt("Sending info packets")
 						clientsocket.send(json.dumps(return_status))
 					elif data["action"] == "move":
 						objects = data["actuators"]
@@ -161,61 +129,51 @@ def main(settings):
 								elif new_speed < 1024:
 									new_speed = 1024
 
-							print str(dynamo["id"]) + " - " + str(dynamo["speed"])
+							device_controller.printdt(str(dynamo["id"]) + " - " + str(dynamo["speed"]))
 							#Set dynamixel register data to send
 							net[int(dynamo["id"])].moving_speed = new_speed
 							#Send data to dynamixels
 							net.synchronize()
 						clientsocket.send("Success")
 					else:
-						errorlog.write("Date: " + time.strftime("%d/%m/%Y") + 
-							"\nTime: " + time.strftime("%H:%M:%S") + 
-							"\nERROR: Wrong protocol format\n")
-						print("Date: " + time.strftime("%d/%m/%Y") + 
-							"\nTime: " + time.strftime("%H:%M:%S") + 
-							"\nError, wrong protocol format")
+						errorlog.write("ERROR: Wrong protocol format")
+						device_controller.printdt("Error, wrong protocol format")
 						clientsocket.send("Error: Wrong protocol format!")
 				#Handles potential valuerrors in the socket data
 				except ValueError:
 					try:
-						errorlog.write("Date: " + time.strftime("%d/%m/%Y") + "\nTime: " + 
-							time.strftime("%H:%M:%S") + 
-							"\nVALUE ERROR: Unable to parse json on string: " + 
-							json_data + "\n")
-						print ("Date: " + time.strftime("%d/%m/%Y") + 
-							"\nTime: " + time.strftime("%H:%M:%S") + 
-							"\nUnable to parse json on string, assuming text message, data: " + json_data)
+						errorlog.write("VALUE ERROR: Unable to parse json on string: " + 
+							json_data)
+						device_controller.printdt("Unable to parse json on string, assuming text message, data: " + json_data)
 					except:
-						errorlog.write("Date: " + time.strftime("%d/%m/%Y") + 
-							"\nTime: " + time.strftime("%H:%M:%S") + 
-							"\nVALUE ERROR: recieved data was corrupt\n")
-						print("Date: " + time.strftime("%d/%m/%Y") + 
-							"\nTime: " + time.strftime("%H:%M:%S") + 
-							"\nRecieved data was corrupt!")
+						errorlog.write("VALUE ERROR: recieved data was corrupt")
+						device_controller.printdt("Recieved data was corrupt!")
 
 					clientsocket.send("A valueerror occured!!!")
 		#Manual menu
 		else:
 			data = raw_input("Type command (help for options): ")
 			if data in ['r', 'R', 'restart', 'reset']:
-				print("Recieved reset command, shutting down!")
-				restart_program()
+				device_controller.printdt("Recieved reset command, restarting now!")
+				errorlog.close_log()
+				device_controller.restart_program()
 			elif data in ['q', 'Q', 'quit', 'QUIT']:
-				print ("Recieved quit command, shutting down!")
+				device_controller.printdt("Recieved quit command, shutting down!")
+				errorlog.close_log()
 				sys.exit()
 			elif data in ['rcw']:
-				print ("Recieved run command (clockwise), starting servos!")
-				for dynamo in objects:
+				device_controller.printdt("Recieved run command (clockwise), starting servos!")
+				for dynamo in net.get_dynamixels():
 					dynamo.moving_speed = 1500
 					net.synchronize()
 			elif data in ['rccw']:
-				print ("Recieved run command (counterclockwise), starting servos!")
-				for dynamo in objects:
+				device_controller.printdt("Recieved run command (counterclockwise), starting servos!")
+				for dynamo in net.get_dynamixels():
 					dynamo.moving_speed = 500
 					net.synchronize()
 			elif data in ['s']:
-				print ("Recieved stop command, stopping servos!")
-				for dynamo in objects:
+				device_controller.printdt("Recieved stop command, stopping servos!")
+				for dynamo in net.get_dynamixels():
 					dynamo.moving_speed = 1024
 					net.synchronize()
 			elif data in ["help"]:
