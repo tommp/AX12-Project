@@ -4,34 +4,10 @@ import sys
 import subprocess
 import optparse
 import yaml
-
 import socket
 import json
 import time
-
-class ErrorLogger:
-	def __init__(self, logfile):
-		try:
-			self.errorlog = open(logfile, 'a')
-			print("Date: " + time.strftime("%d/%m/%Y") + 
-				"\nTime: " + time.strftime("%H:%M:%S") + 
-				"\nErrorlog initialized\n")
-		except:
-			print("Date: " + time.strftime("%d/%m/%Y") + 
-				"\nTime: " + time.strftime("%H:%M:%S") + 
-				"\nFailed to open errorlog!\n")
-			self.errorlog = 0
-
-	def write(self, string):
-		if self.errorlog:
-			self.errorlog.write(string)
-		else:
-			return 0
-
-def restart_program():
-    python = sys.executable
-    os.execl(python, python, * sys.argv)
-		
+from utility import ErrorLogger
 
 def main(settings):
 
@@ -199,7 +175,7 @@ def main(settings):
 			data = raw_input("Type command (help for options): ")
 			if data in ['r', 'R', 'restart', 'reset']:
 				print("Recieved reset command, shutting down!")
-				restart_program()
+				errorlogger.restart_program()
 			elif data in ['q', 'Q', 'quit', 'QUIT']:
 				print ("Recieved quit command, shutting down!")
 				sys.exit()
