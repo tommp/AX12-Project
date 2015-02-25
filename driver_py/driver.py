@@ -90,7 +90,7 @@ def main(settings):
 				print("Date: " + time.strftime("%d/%m/%Y") + 
 					"\nTime: " + time.strftime("%H:%M:%S") + 
 					"\nERROR: Failed to connect to remote server, retrying\n")
-			sleep(DELA_BETWEEN_ATTEMPTS)
+			sleep(DELAY_BETWEEN_ATTEMPTS)
 	else:
 		for i in range(NUMBER_OF_CONNECTION_ATTEMPTS):
 			try:
