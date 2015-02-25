@@ -7,13 +7,15 @@ import yaml
 import socket
 import json
 import time
-from utility import ErrorLogger
+from utility import ErrorLogger, DeviceController
 
 def main(settings):
 
 	SERVER_IP = 'vsop.online.ntnu.no'
 	SERVER_PORT = 9001
 	SERVVER_CONN = (SERVER_IP, SERVER_PORT)
+
+	DEVICE_NAME = "Ruls"
 
 	#-1 for infinite
 	NUMBER_OF_CONNECTION_ATTEMPTS = 100
@@ -30,6 +32,7 @@ def main(settings):
 
 	# Create a errorlogger
 	errorlog = ErrorLogger("Errorlog.txt")
+	device_controller = DeviceController(DEVICE_NAME)
 
 	# Populate our network with dynamixel objects
 	for servoId in settings['servoIds']:
@@ -58,6 +61,7 @@ def main(settings):
 				clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 				clientsocket.connect(SERVVER_CONN)
 				clientsocket.send("Connection established!")
+				clientsocket.send(json.dumps(device_controller.return_name_packet()))
 				connected = True
 			except:
 				errorlog.write("Date: " + time.strftime("%d/%m/%Y") + 
@@ -66,13 +70,14 @@ def main(settings):
 				print("Date: " + time.strftime("%d/%m/%Y") + 
 					"\nTime: " + time.strftime("%H:%M:%S") + 
 					"\nERROR: Failed to connect to remote server, retrying\n")
-			sleep(DELAY_BETWEEN_ATTEMPTS)
+			time.sleep(DELAY_BETWEEN_ATTEMPTS)
 	else:
 		for i in range(NUMBER_OF_CONNECTION_ATTEMPTS):
 			try:
 				clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 				clientsocket.connect(SERVVER_CONN)
 				clientsocket.send("Connection established!")
+				clientsocket.send(json.dumps(device_controller.return_name_packet()))
 				connected = True
 				break;
 			except:
@@ -82,7 +87,7 @@ def main(settings):
 				print("Date: " + time.strftime("%d/%m/%Y") + 
 					"\nTime: " + time.strftime("%H:%M:%S") + 
 					"\nERROR: Failed to connect to remote server, retrying\n")
-			sleep(DELAY_BETWEEN_ATTEMPTS)
+			time.sleep(DELAY_BETWEEN_ATTEMPTS)
 
 	if (not connected):
 		errorlog.write("Date: " + time.strftime("%d/%m/%Y") + 
@@ -114,9 +119,11 @@ def main(settings):
 				try:
 					#Loads the data into a (json)dict
 					data = json.loads(json_data)
+					
 					if data["action"] == "info":
 						objects = data["actuators"]
 						return_status = {}
+						return_status["name"] = device_controller.name
 						for dynamo in objects:
 							return_status[dynamo["id"]] = net[int(dynamo["id"])]._return_json_status()
 						print ("Sending info packets")
@@ -175,7 +182,7 @@ def main(settings):
 			data = raw_input("Type command (help for options): ")
 			if data in ['r', 'R', 'restart', 'reset']:
 				print("Recieved reset command, shutting down!")
-				errorlogger.restart_program()
+				device_controller.restart_program()
 			elif data in ['q', 'Q', 'quit', 'QUIT']:
 				print ("Recieved quit command, shutting down!")
 				sys.exit()

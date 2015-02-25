@@ -22,7 +22,18 @@ class ErrorLogger:
 		else:
 			return 0
 
+	
+
+class DeviceController:
+	def __init__(self, name):
+		self.name = name
+
 	def restart_program():
-	    python = sys.executable
-	    os.execl(python, python, * sys.argv)
+		python = sys.executable
+		os.execl(python, python, * sys.argv)
+
+	def return_name_packet(self):
+		name_packet={}
+		name_packet["name"] = {self.name}
+		return name_packet
 
