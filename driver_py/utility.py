@@ -28,7 +28,7 @@ class DeviceController:
 	def __init__(self, name):
 		self.name = name
 
-	def restart_program():
+	def restart_program(self):
 		python = sys.executable
 		os.execl(python, python, * sys.argv)
 

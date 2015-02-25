@@ -18,7 +18,7 @@ def main(settings):
 	DEVICE_NAME = "Ruls"
 
 	#-1 for infinite
-	NUMBER_OF_CONNECTION_ATTEMPTS = 100
+	NUMBER_OF_CONNECTION_ATTEMPTS = 2
 	#In seconds
 	DELAY_BETWEEN_ATTEMPTS = 1
 
@@ -43,7 +43,7 @@ def main(settings):
 	if not net.get_dynamixels():
 		errorlog.write("Date: " + time.strftime("%d/%m/%Y") + 
 			"\nTime: " + time.strftime("%H:%M:%S") + 
-			"\nERROR: No Dynamixels Found!\n")
+			"\nERROR: No Dynamixels Found!\n" + "\n")
 		print ("Date: " + time.strftime("%d/%m/%Y") + 
 			"\nTime: " + time.strftime("%H:%M:%S") + 
 			"\nNo Dynamixels Found!\n")
@@ -66,7 +66,7 @@ def main(settings):
 			except:
 				errorlog.write("Date: " + time.strftime("%d/%m/%Y") + 
 					"\nTime: " + time.strftime("%H:%M:%S") + 
-					"\nERROR: Failed to connect to remote server, retrying\n")
+					"\nERROR: Failed to connect to remote server, retrying\n" + "\n")
 				print("Date: " + time.strftime("%d/%m/%Y") + 
 					"\nTime: " + time.strftime("%H:%M:%S") + 
 					"\nERROR: Failed to connect to remote server, retrying\n")
@@ -83,7 +83,7 @@ def main(settings):
 			except:
 				errorlog.write("Date: " + time.strftime("%d/%m/%Y") + 
 					"\nTime: " + time.strftime("%H:%M:%S") + 
-					"\nERROR: Failed to connect to remote server, retrying\n")
+					"\nERROR: Failed to connect to remote server, retrying\n" + "\n")
 				print("Date: " + time.strftime("%d/%m/%Y") + 
 					"\nTime: " + time.strftime("%H:%M:%S") + 
 					"\nERROR: Failed to connect to remote server, retrying\n")
@@ -92,7 +92,7 @@ def main(settings):
 	if (not connected):
 		errorlog.write("Date: " + time.strftime("%d/%m/%Y") + 
 			"\nTime: " + time.strftime("%H:%M:%S") + 
-			"\nFATAL ERROR: Failed to connect to remote server\n")
+			"\nFATAL ERROR: Failed to connect to remote server\n" + "\n")
 		print("Date: " + time.strftime("%d/%m/%Y") + 
 			"\nTime: " + time.strftime("%H:%M:%S") + 
 			"\nFATAL ERROR: Failed to connect to server, check network settings and upstream connection then restart\n")
@@ -188,17 +188,17 @@ def main(settings):
 				sys.exit()
 			elif data in ['rcw']:
 				print ("Recieved run command (clockwise), starting servos!")
-				for dynamo in objects:
+				for dynamo in net.get_dynamixels():
 					dynamo.moving_speed = 1500
 					net.synchronize()
 			elif data in ['rccw']:
 				print ("Recieved run command (counterclockwise), starting servos!")
-				for dynamo in objects:
+				for dynamo in net.get_dynamixels():
 					dynamo.moving_speed = 500
 					net.synchronize()
 			elif data in ['s']:
 				print ("Recieved stop command, stopping servos!")
-				for dynamo in objects:
+				for dynamo in net.get_dynamixels():
 					dynamo.moving_speed = 1024
 					net.synchronize()
 			elif data in ["help"]:
