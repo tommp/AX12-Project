@@ -5,19 +5,29 @@ var socket = require("./../socket/socket");
 
 
 router.get('/', function(req, res){
-   res.send([socket.get_all_connections(), socket.get_all_devices()]);
+   res.send("Hello World!");
 });
 
 router.get('/devices/', function(req, res) {
     console.log('Someone requested get all devices');
-    res.send(socket.get_all_devices());
-    console.log(socket.get_all_devices());
+    var responseData = {
+        status: "success",
+        message: {
+            devices: socket.get_all_device_names()
+        }
+    };
+    res.send(responseData);
+    console.log(responseData);
 });
 
 router.get('/device/:name', function(req, res){
     console.log('Someone requested a device id');
-    res.send(socket.get_device_id(req.params.name));
-    console.log(socket.get_device_id(req.params.name));
+    var responseData = {
+        status: "success",
+        message: socket.get_device_id(req.params.name).toString()
+    };
+    res.send(responseData);
+    console.log(responseData);
     res.status(200);
 });
 
