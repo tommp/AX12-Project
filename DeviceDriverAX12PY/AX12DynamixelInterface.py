@@ -11,17 +11,16 @@ from utility import ErrorLogger, DeviceController
 
 def main(settings):
 
-	#SERVER_IP = 'vsop.online.ntnu.no'
-	SERVER_IP = '78.91.7.89'
+	SERVER_IP = 'vsop.online.ntnu.no'
+	#SERVER_IP = '78.91.7.89'
 	SERVER_PORT = 9001
-	SERVVER_CONN = (SERVER_IP, SERVER_PORT)
+	SERVER_CONN = (SERVER_IP, SERVER_PORT)
 
 	#Name of the device, must be unique on the server
 	DEVICE_NAME = "Ruls"
 
 	#-1 for infinite
 	NUMBER_OF_CONNECTION_ATTEMPTS = 10
-
 	#In seconds
 	DELAY_BETWEEN_ATTEMPTS = 1
 
@@ -51,32 +50,9 @@ def main(settings):
 		device_controller.printdt("Dynamixels found, network initialized")
 
 	# Establish server connection##############################################################################
-	connected = False
-	if NUMBER_OF_CONNECTION_ATTEMPTS <= 0:
-		while (not connected):
-			try:
-				clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-				clientsocket.connect(SERVVER_CONN)
-				clientsocket.send(json.dumps(device_controller.return_name_packet()))
-				connected = True
-			except:
-				errorlog.write("ERROR: Failed to connect to remote server, retrying")
-				device_controller.printdt("ERROR: Failed to connect to remote server, retrying")
-			time.sleep(DELAY_BETWEEN_ATTEMPTS)
-	else:
-		for i in range(NUMBER_OF_CONNECTION_ATTEMPTS):
-			try:
-				clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-				clientsocket.connect(SERVVER_CONN)
-				clientsocket.send(json.dumps(device_controller.return_name_packet()))
-				connected = True
-				break;
-			except:
-				errorlog.write("ERROR: Failed to connect to remote server, retrying")
-				device_controller.printdt("ERROR: Failed to connect to remote server, retrying")
-			time.sleep(DELAY_BETWEEN_ATTEMPTS)
+	device_controller.establish_connection(errorlog, SERVER_CONN, NUMBER_OF_CONNECTION_ATTEMPTS, DELAY_BETWEEN_ATTEMPTS)
 
-	if (not connected):
+	if (not device_controller.connected):
 		errorlog.write("FATAL ERROR: Failed to connect to remote server")
 		device_controller.printdt("FATAL ERROR: Failed to connect to server, check network settings and upstream connection then restart")
 	else:
@@ -96,10 +72,10 @@ def main(settings):
 	#MAIN LOOP START##############################################################################################
 	############################################################################################################
 	while True:
-		#Checks if the connection was established, if not allows manual mode locally
-		if connected:
+		#CHecks if the connection was established, if not allows manual mode locally
+		if device_controller.connected:
 			#Reads data from socket
-			json_data = clientsocket.recv(4096)
+			json_data = device_controller.clientsocket.recv(4096)
 			if len(json_data) > 0:
 				try:
 					#Loads the data into a (json)dict
@@ -112,7 +88,7 @@ def main(settings):
 						for dynamo in objects:
 							return_status[dynamo["id"]] = net[int(dynamo["id"])]._return_json_status()
 						device_controller.printdt("Sending info packets")
-						clientsocket.send(json.dumps(return_status))
+						device_controller.clientsocket.send(json.dumps(return_status))
 					elif data["action"] == "move":
 						objects = data["actuators"]
 						for dynamo in objects:
@@ -134,11 +110,11 @@ def main(settings):
 							net[int(dynamo["id"])].moving_speed = new_speed
 							#Send data to dynamixels
 							net.synchronize()
-						clientsocket.send("Success")
+						device_controller.clientsocket.send("Success")
 					else:
 						errorlog.write("ERROR: Wrong protocol format")
 						device_controller.printdt("Error, wrong protocol format")
-						clientsocket.send("Error: Wrong protocol format!")
+						device_controller.clientsocket.send("Error: Wrong protocol format!")
 				#Handles potential valuerrors in the socket data
 				except ValueError:
 					try:
@@ -149,7 +125,7 @@ def main(settings):
 						errorlog.write("VALUE ERROR: recieved data was corrupt")
 						device_controller.printdt("Recieved data was corrupt!")
 
-					clientsocket.send("A valueerror occured!!!")
+					device_controller.clientsocket.send("A valueerror occured!!!")
 		#Manual menu
 		else:
 			data = raw_input("Type command (help for options): ")
