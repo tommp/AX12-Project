@@ -29,3 +29,10 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+
+# Python
+*.pyc
+
+# Java 
+out/
+.idea/
