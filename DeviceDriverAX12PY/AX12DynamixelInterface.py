@@ -46,10 +46,11 @@ def main(settings):
 		if device_controller.connected:
 			#Reads data from socket
 			try:
+				#TODO::MAKE IT TIMEOUT
 				json_data = device_controller.clientsocket.recv(4096)
 			except:
 				errorlog.write("ERROR: Server socket connection failed")
-				printdt("Error, server socket connection failed")
+				printdt("ERROR: Server socket connection failed")
 				device_controller.restart_program()
 			if len(json_data) > 0:
 				try:
@@ -75,7 +76,9 @@ def main(settings):
 						car_id = randint(0,1000)
 						while(car_id in device_controller.configuration_ids):
 							car_id = randint(0,5000)
-						device_controller.create_car_configuration(car_id, data["actuators"].sort())
+						printdt(str(data["actuators"][0]))
+						printdt(str(len(data["actuators"])))
+						device_controller.create_car_configuration(car_id, data["actuators"])
 						device_controller.send_reply_message("Success", car_id)
 						printdt("Created car object with id: " + str(car_id))
 					elif data["action"] == "shutdown":
@@ -84,7 +87,7 @@ def main(settings):
 						sys.exit()
 					else:
 						errorlog.write("ERROR: Wrong protocol format")
-						printdt("Error, wrong protocol format")
+						printdt("ERROR: Wrong protocol format")
 						device_controller.send_reply_message("ERROR","Wrong protocol format!")
 				#Handles potential valuerrors in the socket data
 				except ValueError:

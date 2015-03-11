@@ -63,7 +63,7 @@ class Car_configuration:
 	def add_turn_left(self, turn):
 		if turn > 100:
 			setturn = 100
-		elif speed < 0:
+		elif turn < 0:
 			setturn = 0
 		else:
 			setturn = turn
@@ -94,8 +94,8 @@ class Car_configuration:
 
 		for actuator_id in self.right_actuator_cluster:
 			self.net[actuator_id].moving_speed -= (10 - self.speed_scale)*setturn
-			if self.net[actuator_id].moving_speed < 0:
-				self.net[actuator_id].moving_speed = 0
+			if self.net[actuator_id].moving_speed < 1024:
+				self.net[actuator_id].moving_speed = 1024
 		
 
 
@@ -194,9 +194,9 @@ class DeviceController:
 			self.configurations[conf_id].add_move_backward(abs(speed))
 
 		if(turn > 0):
-			self.configurations[conf_id].add_turn_right(self, turn)
+			self.configurations[conf_id].add_turn_right(turn)
 		elif (turn < 0):
-			self.configurations[conf_id].add_turn_left(self, abs(turn))
+			self.configurations[conf_id].add_turn_left(abs(turn))
 
 		self.net.synchronize()
 
