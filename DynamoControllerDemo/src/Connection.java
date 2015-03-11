@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -16,7 +17,7 @@ public class Connection {
         deviceID = getDeviceID(sendGetMessage("device/" + deviceName, false));
     }
 
-    public int sendPostMessage(String message){
+    public String sendPostMessage(String message){
         try {
             HttpURLConnection httpConnection = createPostConnection();
             httpConnection.setDoOutput(true);
@@ -25,27 +26,34 @@ public class Connection {
             outputStream.flush();
             outputStream.close();
 
-            //httpConnection.setDoOutput(false);
 
             int responseCode = httpConnection.getResponseCode();
+            String responseMessage = getResponseMessage(httpConnection);
 
             System.out.println("Sent post message: " + message);
             System.out.println("Response code: " + responseCode);
-            System.out.println("Response message: " + getResponseMessage(httpConnection));
+            System.out.println("Response message: " + responseMessage);
 
-            return responseCode;
+            return responseMessage;
         } catch (IOException e) {
             e.printStackTrace();
-            return -1;
+            return "";
         }
     }
 
     public String sendGetMessage(String param, boolean deviceSpecific){
         try {
             HttpURLConnection httpConnection = createGetConnection(param, deviceSpecific);
-            //httpConnection.setDoOutput(true);
 
-            int responseCode = httpConnection.getResponseCode();
+
+            int responseCode = 0;
+            try {
+                responseCode = httpConnection.getResponseCode();
+            } catch (ConnectException e) {
+                e.printStackTrace();
+                System.out.println("Unable to connect to host - Exiting");
+                System.exit(3);
+            }
 
             System.out.println("Sent GET message: " + param);
             System.out.println("Response code: " + responseCode);
@@ -84,7 +92,7 @@ public class Connection {
     }
 
     private HttpURLConnection createPostConnection() throws IOException{
-        URL obj = new URL(url + "/" + deviceID);
+        URL obj = new URL(url + "/device/" + deviceID);
         HttpURLConnection httpConnection = (HttpURLConnection) obj.openConnection();
 
         httpConnection.setRequestMethod("POST");
@@ -111,8 +119,13 @@ public class Connection {
     }
 
     private String getDeviceID(String message){
-        //TODO parse json
-        System.out.println(message);
-        return message;
+        Response response = (Response) JSONConverter.fromJson(message, Response.class);
+
+        if(response.getStatus().equals("error")) {
+            System.out.println(response.getMessage());
+            System.out.println("Unable to get the device id");
+            System.exit(3);
+        }
+        return response.getMessage();
     }
 }
