@@ -9,6 +9,95 @@ import socket
 import json
 import time
 
+class Car_configuration:
+	def __init__(self, left_actuator_cluster, right_actuator_cluster, net):
+		self.right_actuator_cluster = right_actuator_cluster
+		self.left_actuator_cluster = left_actuator_cluster
+		self.speed_scale = 6
+		self.net = net
+
+	def reset_speed(self):
+		for actuator_id in self.left_actuator_cluster:
+			self.net[actuator_id].moving_speed = 0
+
+		for actuator_id in self.right_actuator_cluster:
+			self.net[actuator_id].moving_speed = 1024
+
+	def add_move_forward(self, speed):
+		if speed > 100:
+			setspeed = 100
+		elif speed < 0:
+			setspeed = 0
+		else:
+			setspeed = speed
+
+		for actuator_id in self.left_actuator_cluster:
+			self.net[actuator_id].moving_speed += (self.speed_scale*setspeed)
+			if self.net[actuator_id].moving_speed > 2048:
+				self.net[actuator_id].moving_speed = 2048
+
+		for actuator_id in self.right_actuator_cluster:
+			self.net[actuator_id].moving_speed += (self.speed_scale*setspeed)
+			if self.net[actuator_id].moving_speed > 2048:
+				self.net[actuator_id].moving_speed = 2048
+
+
+	def add_move_backward(self, speed):
+		if speed > 100:
+			setspeed = 100
+		elif speed < 0:
+			setspeed = 0
+		else:
+			setspeed = speed
+
+		for actuator_id in self.left_actuator_cluster:
+			self.net[actuator_id].moving_speed += (1024 + self.speed_scale*setspeed)
+			if self.net[actuator_id].moving_speed > 2048:
+				self.net[actuator_id].moving_speed = 2048
+
+		for actuator_id in self.right_actuator_cluster:
+			self.net[actuator_id].moving_speed -= (1000 - self.speed_scale*setspeed) 
+			if self.net[actuator_id].moving_speed < 0:
+				self.net[actuator_id].moving_speed = 0
+
+	def add_turn_left(self, turn):
+		if turn > 100:
+			setturn = 100
+		elif speed < 0:
+			setturn = 0
+		else:
+			setturn = turn
+
+		#TODO::TAKE CARE OF SPECIAL CASES TO WORK PROPERLY
+		for actuator_id in self.left_actuator_cluster:
+			self.net[actuator_id].moving_speed -= (10 - self.speed_scale)*setturn
+			if self.net[actuator_id].moving_speed < 0:
+				self.net[actuator_id].moving_speed = 0
+
+		for actuator_id in self.right_actuator_cluster:
+			self.net[actuator_id].moving_speed += (10 - self.speed_scale)*setturn
+			if self.net[actuator_id].moving_speed > 2048:
+				self.net[actuator_id].moving_speed = 2048
+
+	def add_turn_right(self, turn):
+		if turn > 100:
+			setturn = 100
+		elif turn < 0:
+			setturn = 0
+		else:
+			setturn = turn
+
+		for actuator_id in self.left_actuator_cluster:
+			self.net[actuator_id].moving_speed += (10 - self.speed_scale)*setturn
+			if self.net[actuator_id].moving_speed > 2048:
+				self.net[actuator_id].moving_speed = 2048
+
+		for actuator_id in self.right_actuator_cluster:
+			self.net[actuator_id].moving_speed -= (10 - self.speed_scale)*setturn
+			if self.net[actuator_id].moving_speed < 0:
+				self.net[actuator_id].moving_speed = 0
+		
+
 
 class ErrorLogger:
 	def __init__(self, logfile):
@@ -38,21 +127,14 @@ class ErrorLogger:
 
 class DeviceController:
 	def __init__(self, settings, errorlog):
-		self.name = settings['name']
+		try:
+			self.name = settings['name']
+		except:
+			self.name = "RULS_DEFAULT"
 		self.clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		self.connected = True
-		self.right_actuator_cluster = []
-		self.left_actuator_cluster = []
-		self.speed_scale = 6
-
-
-		#CW for forward
-		for i in range((settings['servoIds'].size())/2):
-			self.right_actuator_cluster.append(settings['servoIds'][i])
-
-		#CCW for forward
-		for i in range((settings['servoIds'].size())/2, settings['servoIds'].size()):
-			self.left_actuator_cluster.append(settings['servoIds'][i])
+		self.connected = False
+		self.configurations = {}
+		self.configuration_ids = []
 
 		# Establish a serial connection to the dynamixel network.
 		# This usually requires a USB2Dynamixel
@@ -61,6 +143,9 @@ class DeviceController:
 										timeout=1)
 		# Instantiate our network object
 		self.net = dynamixel.DynamixelNetwork(self.serial)
+
+		self.create_car_configuration(0, settings['servoIds'])
+
 
 		# Populate our network with dynamixel objects
 		for servoId in settings['servoIds']:
@@ -85,73 +170,34 @@ class DeviceController:
 			
 		self.net.synchronize()
 
-	def reset_speed(self):
-		for actuator_id in self.left_actuator_cluster:
-			self.net[actuator_id].moving_speed = 1024
+	def create_car_configuration(self, conf_id, servo_ids):
+		right_actuator_cluster = []
+		left_actuator_cluster = []
 
-		for actuator_id in self.right_actuator_cluster:
-			self.net[actuator_id].moving_speed = 1024
+		self.configuration_ids.append(conf_id)
 
-	def add_move_forward(self, speed):
-		if speed > 100:
-			setspeed = 100
-		elif speed < 0:
-			setspeed = 0
-		else:
-			setspeed = speed
+		#CW for forward
+		for i in range(len(servo_ids)/2):
+			right_actuator_cluster.append(servo_ids[i])
 
-		for actuator_id in self.left_actuator_cluster:
-			self.net[actuator_id].moving_speed -= (1000 - self.speed_scale*speed)
+		#CCW for forward
+		for i in range(len(servo_ids)/2, len(servo_ids)):
+			left_actuator_cluster.append(servo_ids[i])
 
-		for actuator_id in self.right_actuator_cluster:
-			self.net[actuator_id].moving_speed += self.speed_scale*speed
+		self.configurations[conf_id] = Car_configuration(left_actuator_cluster, right_actuator_cluster, self.net)
 
+	def move_configuration(self, speed, turn, conf_id):
+		self.configurations[conf_id].reset_speed()
+		if(speed > 0):
+			self.configurations[conf_id].add_move_forward(speed)
+		elif(speed < 0):
+			self.configurations[conf_id].add_move_backward(abs(speed))
 
-	def add_move_backward(self, speed):
-		if speed > 100:
-			setspeed = 100
-		elif speed < 0:
-			setspeed = 0
-		else:
-			setspeed = speed
+		if(turn > 0):
+			self.configurations[conf_id].add_turn_right(self, turn)
+		elif (turn < 0):
+			self.configurations[conf_id].add_turn_left(self, abs(turn))
 
-		for actuator_id in self.left_actuator_cluster:
-			self.net[actuator_id].moving_speed += self.speed_scale*speed
-
-		for actuator_id in self.right_actuator_cluster:
-			self.net[actuator_id].moving_speed -= (1000 - self.speed_scale*speed) 
-
-	#THIS IS LOL; FIX IT
-	def add_turn_left(self, turn):
-		if speed > 100:
-			setspeed = 100
-		elif speed < 0:
-			setspeed = 0
-		else:
-			setspeed = speed
-
-		for actuator_id in self.left_actuator_cluster:
-			self.net[actuator_id].moving_speed += (10 - self.speed_scale)*speed
-
-		for actuator_id in self.right_actuator_cluster:
-			self.net[actuator_id].moving_speed += (10 - self.speed_scale)*speed
-
-	#THIS IS LOL; FIX IT
-	def add_turn_right(self, turn):
-		if speed > 100:
-			setspeed = 100
-		elif speed < 0:
-			setspeed = 0
-		else:
-			setspeed = speed
-
-		for actuator_id in self.left_actuator_cluster:
-			self.net[actuator_id].moving_speed -= (10 - self.speed_scale)*speed
-
-		for actuator_id in self.right_actuator_cluster:
-			self.net[actuator_id].moving_speed -= (10 - self.speed_scale)*speed
-
-	def move(speed, turn):
 		self.net.synchronize()
 
 	def restart_program(self):
@@ -172,7 +218,7 @@ class DeviceController:
 					self.connected = True
 				except:
 					errorlog.write("ERROR: Failed to connect to remote server, retrying")
-					self.printdt("ERROR: Failed to connect to remote server, retrying")
+					printdt("ERROR: Failed to connect to remote server, retrying")
 				time.sleep(conn_attempt_delay)
 		else:
 			for i in range(num_conn_attempts):
@@ -183,8 +229,14 @@ class DeviceController:
 					break;
 				except:
 					errorlog.write("ERROR: Failed to connect to remote server, retrying")
-					self.printdt("ERROR: Failed to connect to remote server, retrying")
+					printdt("ERROR: Failed to connect to remote server, retrying")
 				time.sleep(conn_attempt_delay)
+
+	def send_reply_message(self, status, message):
+		status_packet={}
+		status_packet["status"] = status
+		status_packet["message"] = message
+		self.clientsocket.send(json.dumps(status_packet))
 
 def printdt(string):
 		print ("Date: " + time.strftime("%d/%m/%Y") + 

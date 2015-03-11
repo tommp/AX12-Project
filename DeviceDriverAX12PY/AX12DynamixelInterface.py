@@ -7,29 +7,29 @@ import yaml
 import socket
 import json
 import time
-from utility import ErrorLogger, DeviceController
+from utility import ErrorLogger, DeviceController, printdt
+from random import randint
+
 
 def main(settings):
 
-	SERVER_IP = 'vsop.online.ntnu.no'
-	#SERVER_IP = '78.91.7.89'
+	#SERVER_IP = 'vsop.online.ntnu.no'
+	SERVER_IP = '78.91.5.62'
 	SERVER_PORT = 9001
 	SERVER_CONN = (SERVER_IP, SERVER_PORT)
 
-	#Name of the device, must be unique on the server
-	DEVICE_NAME = "Ruls"
-
 	#-1 for infinite
-	NUMBER_OF_CONNECTION_ATTEMPTS = 10
+	NUMBER_OF_CONNECTION_ATTEMPTS = -1
 	#In seconds
 	DELAY_BETWEEN_ATTEMPTS = 1
 
 	# Create a errorlogger
 	errorlog = ErrorLogger("errorlog.txt")
 
+	# Create a device controller
 	device_controller = DeviceController(settings, errorlog)
 
-	# Establish server connection##############################################################################
+	# Establish server connection
 	device_controller.establish_connection(errorlog, SERVER_CONN, NUMBER_OF_CONNECTION_ATTEMPTS, DELAY_BETWEEN_ATTEMPTS)
 
 	if (not device_controller.connected):
@@ -37,15 +37,20 @@ def main(settings):
 		printdt("FATAL ERROR: Failed to connect to server, check network settings and upstream connection then restart")
 	else:
 		printdt("Successfully connected to remote server")
-	############################################################################################################
+
 
 	#MAIN LOOP START##############################################################################################
 	############################################################################################################
 	while True:
-		#CHecks if the connection was established, if not allows manual mode locally
+		#Checks if the connection was established, if not allows manual mode locally
 		if device_controller.connected:
 			#Reads data from socket
-			json_data = device_controller.clientsocket.recv(4096)
+			try:
+				json_data = device_controller.clientsocket.recv(4096)
+			except:
+				errorlog.write("ERROR: Server socket connection failed")
+				printdt("Error, server socket connection failed")
+				device_controller.restart_program()
 			if len(json_data) > 0:
 				try:
 					#Loads the data into a (json)dict
@@ -57,76 +62,73 @@ def main(settings):
 						return_status["name"] = device_controller.name
 						for dynamo in objects:
 							return_status[dynamo["id"]] = device_controller.net[int(dynamo["id"])]._return_json_status()
-						printdt("Sending info packets")
+						printdt("Sending info packets..")
 						device_controller.clientsocket.send(json.dumps(return_status))
-					elif data["action"] == "moveSpecific":
-						objects = data["actuators"]
-						for dynamo in objects:
-							if int(dynamo["speed"]) > 0:#Go clockwise (CW)
-								new_speed = int(dynamo["speed"])*10 + 1000
-								if new_speed > 2000:
-									new_speed = 2000
-								elif new_speed < 1024:
-									new_speed = 1024
-							elif int(dynamo["speed"]) < 0:#Go counterclockwise (CCW):					
-								new_speed = int(dynamo["speed"])*10
-								if new_speed > 1000:
-									new_speed = 1000
-								elif new_speed < 0:
-									new_speed = 0
-
-							printdt(str(dynamo["id"]) + " - " + str(dynamo["speed"]))
-							#Set dynamixel register data to send
-							device_controller.net[int(dynamo["id"])].moving_speed = new_speed
-							#Send data to dynamixels
-							device_controller.net.synchronize()
-						device_controller.clientsocket.send("Success")
-					elif data["action"] == "move":
-						device_controller.move(data["speed"], data["turn"])
+						printdt("Info packets sent!")
+					elif data["action"] == "moveCar":
+						status_string = "Speed set to: " + str(data["speed"]) + ", Direction set to: " + str(data["direction"])
+						device_controller.move_configuration(int(data["speed"]), int(data["direction"]), int(data["id"]))
+						device_controller.send_reply_message("Success", status_string)
+						printdt(status_string)
+					elif data["action"] == "createCar":
+						#TODO:::::SMARTER WAY FOR THIS, INCREMENT AND ADD
+						car_id = randint(0,1000)
+						while(car_id in device_controller.configuration_ids):
+							car_id = randint(0,5000)
+						device_controller.create_car_configuration(car_id, data["actuators"].sort())
+						device_controller.send_reply_message("Success", car_id)
+						printdt("Created car object with id: " + str(car_id))
+					elif data["action"] == "shutdown":
+						printdt("Recieved quit command, shutting down!")
+						errorlog.close_log()
+						sys.exit()
 					else:
 						errorlog.write("ERROR: Wrong protocol format")
 						printdt("Error, wrong protocol format")
-						device_controller.clientsocket.send("Error: Wrong protocol format!")
+						device_controller.send_reply_message("ERROR","Wrong protocol format!")
 				#Handles potential valuerrors in the socket data
 				except ValueError:
 					try:
+						device_controller.send_reply_message("VALUE ERROR","Unable to parse json on string: " + 
+							json_data)
 						errorlog.write("VALUE ERROR: Unable to parse json on string: " + 
 							json_data)
 						printdt("Unable to parse json on string, assuming text message, data: " + json_data)
 					except:
-						errorlog.write("VALUE ERROR: recieved data was corrupt")
+						device_controller.send_reply_message("VALUE ERROR", "Recieved data was corrupt")
+						errorlog.write("VALUE ERROR: Recieved data was corrupt")
 						printdt("Recieved data was corrupt!")
-
-					device_controller.clientsocket.send("A valueerror occured!!!")
 		#Manual menu
 		else:
-			data = raw_input("Type command (help for options): ")
-			if data in ['r', 'R', 'restart', 'reset']:
-				printdt("Recieved reset command, restarting now!")
-				errorlog.close_log()
-				device_controller.restart_program()
-			elif data in ['q', 'Q', 'quit', 'QUIT']:
-				printdt("Recieved quit command, shutting down!")
-				errorlog.close_log()
-				sys.exit()
-			elif data in ['rcw']:
-				printdt("Recieved run command (clockwise), starting servos!")
-				for dynamo in net.get_dynamixels():
-					dynamo.moving_speed = 1500
-					net.synchronize()
-			elif data in ['rccw']:
-				printdt("Recieved run command (counterclockwise), starting servos!")
-				for dynamo in net.get_dynamixels():
-					dynamo.moving_speed = 500
-					net.synchronize()
-			elif data in ['s']:
-				printdt("Recieved stop command, stopping servos!")
-				for dynamo in net.get_dynamixels():
-					dynamo.moving_speed = 1024
-					net.synchronize()
-			elif data in ["help"]:
-				print("Commands: r = Restart, q = Shutdown, rcw = Run clockwise, rccw = Run counterclockwise, s = Stop\n")
-
+			while(True):
+				data = raw_input("Type command (help for options): ")
+				if data in ['r', 'R', 'restart', 'reset']:
+					printdt("Recieved reset command, restarting now!")
+					errorlog.close_log()
+					device_controller.restart_program()
+				elif data in ['q', 'Q', 'quit', 'QUIT']:
+					printdt("Recieved quit command, shutting down!")
+					errorlog.close_log()
+					sys.exit()
+				elif data in ['rcw']:
+					printdt("Recieved run command (clockwise), starting servos!")
+					for dynamo in device_controller.net.get_dynamixels():
+						dynamo.moving_speed = 1500
+						device_controller.net.synchronize()
+				elif data in ['rccw']:
+					printdt("Recieved run command (counterclockwise), starting servos!")
+					for dynamo in device_controller.net.get_dynamixels():
+						dynamo.moving_speed = 500
+						device_controller.net.synchronize()
+				elif data in ['s']:
+					printdt("Recieved stop command, stopping servos!")
+					for dynamo in device_controller.net.get_dynamixels():
+						dynamo.moving_speed = 1024
+						device_controller.net.synchronize()
+				elif data in ["help"]:
+					print("Commands: r = Restart, q = Shutdown, rcw = Run clockwise, rccw = Run counterclockwise, s = Stop\n")
+				else:
+					continue
 	#MAIN LOOP END##############################################################################################
 	############################################################################################################
 

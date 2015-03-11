@@ -771,6 +771,3 @@ class Dynamixel (object):
         status["setvalues"]["alarm_shutdown"] = self._get_register_value(AX12.AlarmShutdown)
 
         return status
-
-
-    
