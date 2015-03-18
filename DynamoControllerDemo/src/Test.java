@@ -7,7 +7,7 @@ public class Test {
 
     private static final String URL = "http://78.91.49.219:9002";
     //private static final String URL = "http://vsop.online.ntnu.no:9002";
-    private static final String DEVICE_NAME = "Ruls";
+    private static final String DEVICE_NAME = "ruls";
 
     public static void main(String[] args){
 
