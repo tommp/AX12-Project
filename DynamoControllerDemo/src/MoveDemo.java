@@ -3,8 +3,10 @@ import jgamepad.enums.Analog;
 import jgamepad.enums.Button;
 import jgamepad.interfaces.ButtonPressedEvent;
 import jgamepad.listeners.ButtonPressedListener;
+import objects.Action;
+import objects.Actuator;
 
-public class Main {
+public class MoveDemo {
 
     private static String URL = "http://78.91.7.89:9002";
     private static String DEVICE_NAME = "Ruls";
@@ -23,7 +25,7 @@ public class Main {
             public void run(boolean pressed) {
                 if(pressed){
                     System.out.println("Turning off");
-                    String message = generateMoveMessage(0, "clockwise");
+                    String message = generateMoveMessage(0);
                     connection.sendPostMessage(message);
                 }
             }
@@ -34,7 +36,7 @@ public class Main {
             public void run(boolean pressed) {
                 if(pressed){
                     System.out.println("Turning off");
-                    String message = generateMoveMessage(50, "clockwise");
+                    String message = generateMoveMessage(50);
                     connection.sendPostMessage(message);
                 }
             }
@@ -46,8 +48,7 @@ public class Main {
                 if(analogValue != 0 || lastAnalogValue != 0) {
                     lastAnalogValue = analogValue;
                     int speed = getSpeed(analogValue);
-                    System.out.println("Speed: " + speed);
-                    String message = generateMoveMessage(speed, analogValue < 0 ? "counterclockwise" : "clockwise");
+                    String message = generateMoveMessage(speed);
                     connection.sendPostMessage(message);
                 }
                 Thread.sleep(50);
@@ -58,19 +59,22 @@ public class Main {
     }
 
     private static int getSpeed(int analogValue){
-        if(analogValue < 0)
-            analogValue *= -1;
         double speed = (double) analogValue / ANALOG_MAX_VALUE * 100;
         return (int) speed;
     }
 
-    private static String generateMoveMessage(int speed, String direction){
-        String moveMessage = "{ \"action\": \"move\"," +
-                "\"actuators\": [" +
-                "{\"id\":4, \"direction\":" + "\"" + direction + "\"" + ", \"speed\":" + speed + "}," +
-                "{\"id\":2, \"direction\":" + "\"" + direction + "\"" + ", \"speed\":" + speed + "}" +
-                "]}";
+    private static String generateMoveMessage(int speed){
+//        String moveMessage = "{ \"action\": \"move\"," +
+//                "\"actuators\": [" +
+//                "{\"id\":4, \"direction\":" + "\"" + direction + "\"" + ", \"speed\":" + speed + "}," +
+//                "{\"id\":2, \"direction\":" + "\"" + direction + "\"" + ", \"speed\":" + speed + "}" +
+//                "]}";
 
-        return moveMessage;
+        Actuator actuator1 = new Actuator(2, speed);
+        Actuator actuator2 = new Actuator(4, speed);
+
+        Action action = new Action("move", new Actuator[] {actuator1, actuator2});
+
+        return JSONConverter.toJson(action);
     }
 }

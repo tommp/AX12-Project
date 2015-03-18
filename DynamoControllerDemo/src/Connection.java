@@ -1,3 +1,5 @@
+import objects.Response;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -59,8 +61,6 @@ public class Connection {
             System.out.println("Response code: " + responseCode);
 
             String response = getResponseMessage(httpConnection);
-
-            System.out.println("Response message: " + response);
 
             return response;
         } catch (IOException e) {
