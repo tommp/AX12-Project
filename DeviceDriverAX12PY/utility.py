@@ -188,10 +188,9 @@ class DeviceController:
 		for actuator in self.net.get_dynamixels():
 			net_ids.append(actuator.id)
 
-		printdt("Creating car configuration with id: " + str(conf_id))
+		printdt("Creating car configuration with id: " + str(conf_id) + "...")
 
 		for servo in servo_ids:
-			printdt("Checking network settings...")
 			if servo not in net_ids:
 				request_ok = False
 				invalid_servos.append(servo)
@@ -199,11 +198,12 @@ class DeviceController:
 				errorlog.write("ERROR: Requested id not in dynamixel network: " + str(servo))
 
 		if not request_ok:
-			printdt("ERROR: Requested id(s) not in dynamixel network")
 			status_string = "Requested id(s) not in dynamixel network: "
 			for invalid_servo in invalid_servos:
 				status_string += str(invalid_servo) + ", "
+			printdt(status_string)
 			device_controller.send_reply_message("Error",  status_string)
+			return -1;
 		else:
 			printdt("Servos initialized")
 

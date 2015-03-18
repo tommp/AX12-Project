@@ -69,14 +69,17 @@ def main(settings):
 						printdt("Sending info packets..")
 						device_controller.clientsocket.send(json.dumps(return_status))
 						printdt("Info packets sent!")
+
 					elif data["action"] == "listActuators":
 						device_controller.send_ids()
 						printdt("Id info packet sent!")
+
 					elif data["action"] == "moveCar":
 						status_string = "Speed set to: " + str(data["speed"]) + ", Direction set to: " + str(data["direction"])
 						device_controller.move_configuration(int(data["speed"]), int(data["direction"]), int(data["id"]))
 						device_controller.send_reply_message("Success", status_string)
 						printdt(status_string)
+
 					elif data["action"] == "createCar":
 						#TODO:::::SMARTER WAY FOR THIS, INCREMENT AND ADD
 						car_id = randint(0,5000)
@@ -85,13 +88,15 @@ def main(settings):
 						device_controller.create_car_configuration(car_id, data["actuators"])
 						device_controller.send_reply_message("Success", car_id)
 						printdt("Created car object with id: " + str(car_id))
+
 					elif data["action"] == "shutdown":
 						printdt("Recieved quit command, shutting down!")
 						errorlog.close_log()
 						sys.exit()
+						
 					else:
-						errorlog.write("ERROR: Wrong protocol format")
-						printdt("ERROR: Wrong protocol format")
+						errorlog.write("ERROR: Recieved command with wrong protocol format")
+						printdt("ERROR: Recieved command with wrong protocol format")
 						device_controller.send_reply_message("ERROR","Wrong protocol format!")
 				#Handles potential valuerrors in the socket data
 				except ValueError:
