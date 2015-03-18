@@ -105,7 +105,7 @@ public class Connection {
     private HttpURLConnection createGetConnection(String param, boolean deviceSpecific) throws IOException{
         URL obj;
         if(deviceSpecific)
-            obj = new URL(url + "/" + deviceID + "/" + param);
+            obj = new URL(url + "/device/" + deviceID + "/" + param);
         else
             obj = new URL(url + "/" + param);
 

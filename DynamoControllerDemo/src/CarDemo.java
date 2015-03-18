@@ -27,7 +27,8 @@ public class CarDemo {
         Controller.dllPath = System.getProperty("user.dir") + "\\libs";
         Controller controller = new Controller(0, 50);
 
-        String responseString = connection.sendPostMessage(createCarMessage(1,2,3,4));
+        //String responseString = connection.sendPostMessage(createCarMessage(1,2,3,4));
+        String responseString = connection.sendPostMessage(createCarMessage(2,4, 0, 0));
 
         Response response = (Response) JSONConverter.fromJson(responseString, Response.class);
 
