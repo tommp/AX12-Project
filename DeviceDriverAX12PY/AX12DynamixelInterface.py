@@ -38,7 +38,7 @@ def main(settings):
 		printdt("FATAL ERROR: Failed to connect to server, check network settings and upstream connection then restart")
 	else:
 		printdt("Successfully connected to remote server")
-		device_controller.create_car_configuration(0, settings['servoIds'])
+		device_controller.create_car_configuration(errorlog, 0, settings['servoIds'])
 	
 
 
@@ -54,6 +54,7 @@ def main(settings):
 			except:
 				errorlog.write("ERROR: Server socket connection failed")
 				printdt("ERROR: Server socket connection failed")
+				printdt("Restarting program!")
 				device_controller.restart_program()
 			if len(json_data) > 0:
 				try:
@@ -85,7 +86,7 @@ def main(settings):
 						car_id = randint(0,5000)
 						while(car_id in device_controller.configuration_ids):
 							car_id = randint(0,5000)
-						device_controller.create_car_configuration(car_id, data["actuators"])
+						device_controller.create_car_configuration(errorlog, car_id, data["actuators"])
 						device_controller.send_reply_message("Success", car_id)
 						printdt("Created car object with id: " + str(car_id))
 

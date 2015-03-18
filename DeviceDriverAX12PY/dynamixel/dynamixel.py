@@ -304,7 +304,6 @@ class Dynamixel (object):
             if self._synchronized:
                 if register == AX12.MovingSpeed and value == 0:
                     value = 1
-                    print "Moving speed %d " % (value)
                 self[register] = value
                 self.changed = True
             elif register in [AX12.ModelNumber, 
