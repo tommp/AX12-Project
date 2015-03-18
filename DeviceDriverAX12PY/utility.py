@@ -172,10 +172,10 @@ class DeviceController:
 		return_status["name"] = self.name
 		return_status["ids"] = []
 		for actuator in self.net.get_dynamixels():
-			return_status["ids"].append(str(actuator.id))
+			return_status["ids"].append(actuator.id)
 		self.clientsocket.send(json.dumps(return_status))
 
-	def create_car_configuration(self, conf_id, servo_ids):
+	def create_car_configuration(self, errorlog, conf_id, servo_ids):
 		right_actuator_cluster = []
 		left_actuator_cluster = []
 
