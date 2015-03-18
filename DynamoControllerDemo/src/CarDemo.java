@@ -9,9 +9,9 @@ import objects.Response;
 
 public class CarDemo {
 
-    //private static final String URL = "http://78.91.49.219:9002";
-    private static final String URL = "http://vsop.online.ntnu.no:9002";
-    private static final String DEVICE_NAME = "Ruls";
+    private static final String URL = "http://78.91.49.219:9002";
+    //private static final String URL = "http://vsop.online.ntnu.no:9002";
+    private static final String DEVICE_NAME = "ruls";
 
     private static int RIGHT_ANALOG_MAX_VALUE = 24078;
     private static int LEFT_ANALOG_MAX_VALUE = 24918;
@@ -27,7 +27,7 @@ public class CarDemo {
         Controller.dllPath = System.getProperty("user.dir") + "\\libs";
         Controller controller = new Controller(0, 50);
 
-        String responseString = connection.sendPostMessage(createCarMessage(2,4,0,0));
+        String responseString = connection.sendPostMessage(createCarMessage(1,2,3,4));
 
         Response response = (Response) JSONConverter.fromJson(responseString, Response.class);
 

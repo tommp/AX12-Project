@@ -5,6 +5,10 @@ import objects.Actuator;
 
 public class Test {
 
+    private static final String URL = "http://78.91.49.219:9002";
+    //private static final String URL = "http://vsop.online.ntnu.no:9002";
+    private static final String DEVICE_NAME = "Ruls";
+
     public static void main(String[] args){
 
 //        objects.Car car = new objects.Car(1, 2, 3, 4);
@@ -20,16 +24,20 @@ public class Test {
 //        System.out.println(JSONConverter.toJson(action));
 
 
-        Controller.dllPath = System.getProperty("user.dir") + "\\libs";
-        Controller controller = new Controller(0, 50);
+//        Controller.dllPath = System.getProperty("user.dir") + "\\libs";
+//        Controller controller = new Controller(0, 50);
+//
+//        while (true){
+//            System.out.println(controller.getAnalogValue(Analog.R2));
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
 
-        while (true){
-            System.out.println(controller.getAnalogValue(Analog.R2));
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        Connection connection = new Connection(URL, DEVICE_NAME);
+
+        System.out.println(connection.sendGetMessage("actuators", true));
     }
 }
