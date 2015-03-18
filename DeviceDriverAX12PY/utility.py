@@ -144,9 +144,6 @@ class DeviceController:
 		# Instantiate our network object
 		self.net = dynamixel.DynamixelNetwork(self.serial)
 
-		self.create_car_configuration(0, settings['servoIds'])
-
-
 		# Populate our network with dynamixel objects
 		for servoId in settings['servoIds']:
 			newDynamixel = dynamixel.Dynamixel(servoId, self.net)
@@ -170,11 +167,45 @@ class DeviceController:
 			
 		self.net.synchronize()
 
+	def send_ids(self):
+		return_status = {}
+		return_status["name"] = self.name
+		return_status["ids"] = []
+		for actuator in self.net.get_dynamixels():
+			return_status["ids"].append(str(actuator.id))
+		self.clientsocket.send(json.dumps(return_status))
+
 	def create_car_configuration(self, conf_id, servo_ids):
 		right_actuator_cluster = []
 		left_actuator_cluster = []
 
 		self.configuration_ids.append(conf_id)
+
+		request_ok = True
+		invalid_servos = []
+		net_ids = []
+
+		for actuator in self.net.get_dynamixels():
+			net_ids.append(actuator.id)
+
+		printdt("Creating car configuration with id: " + str(conf_id))
+
+		for servo in servo_ids:
+			printdt("Checking network settings...")
+			if servo not in net_ids:
+				request_ok = False
+				invalid_servos.append(servo)
+				printdt("ERROR: Requested id not in dynamixel network: " + str(servo))
+				errorlog.write("ERROR: Requested id not in dynamixel network: " + str(servo))
+
+		if not request_ok:
+			printdt("ERROR: Requested id(s) not in dynamixel network")
+			status_string = "Requested id(s) not in dynamixel network: "
+			for invalid_servo in invalid_servos:
+				status_string += str(invalid_servo) + ", "
+			device_controller.send_reply_message("Error",  status_string)
+		else:
+			printdt("Servos initialized")
 
 		#CW for forward
 		for i in range(len(servo_ids)/2):
@@ -183,6 +214,8 @@ class DeviceController:
 		#CCW for forward
 		for i in range(len(servo_ids)/2, len(servo_ids)):
 			left_actuator_cluster.append(servo_ids[i])
+
+		printdt("Success: Created car configuration with id: " + str(conf_id))
 
 		self.configurations[conf_id] = Car_configuration(left_actuator_cluster, right_actuator_cluster, self.net)
 
@@ -213,6 +246,7 @@ class DeviceController:
 		if num_conn_attempts <= 0:
 			while (not self.connected):
 				try:
+					printdt("Attempting to connect to remote...")
 					self.clientsocket.connect(server_conn)
 					self.clientsocket.send(json.dumps(self.return_name_packet()))
 					self.connected = True
@@ -223,9 +257,11 @@ class DeviceController:
 		else:
 			for i in range(num_conn_attempts):
 				try:
+					printdt("Attempting to connect to remote...")
 					self.clientsocket.connect(server_conn)
 					self.clientsocket.send(json.dumps(self.return_name_packet()))
 					self.connected = True
+					printdt("Connected!")
 					break;
 				except:
 					errorlog.write("ERROR: Failed to connect to remote server, retrying")

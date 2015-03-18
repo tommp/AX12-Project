@@ -14,16 +14,17 @@ from random import randint
 def main(settings):
 
 	#SERVER_IP = 'vsop.online.ntnu.no'
-	SERVER_IP = '78.91.5.62'
+	#SERVER_IP = '78.91.4.158'
+	SERVER_IP = '78.91.49.219'
 	SERVER_PORT = 9001
 	SERVER_CONN = (SERVER_IP, SERVER_PORT)
 
 	#-1 for infinite
-	NUMBER_OF_CONNECTION_ATTEMPTS = -1
+	NUMBER_OF_CONNECTION_ATTEMPTS = 0
 	#In seconds
 	DELAY_BETWEEN_ATTEMPTS = 1
 
-	# Create a errorlogger
+	# Create an errorlogger
 	errorlog = ErrorLogger("errorlog.txt")
 
 	# Create a device controller
@@ -37,6 +38,8 @@ def main(settings):
 		printdt("FATAL ERROR: Failed to connect to server, check network settings and upstream connection then restart")
 	else:
 		printdt("Successfully connected to remote server")
+		device_controller.create_car_configuration(0, settings['servoIds'])
+	
 
 
 	#MAIN LOOP START##############################################################################################
@@ -66,6 +69,9 @@ def main(settings):
 						printdt("Sending info packets..")
 						device_controller.clientsocket.send(json.dumps(return_status))
 						printdt("Info packets sent!")
+					elif data["action"] == "listActuators":
+						device_controller.send_ids()
+						printdt("Id info packet sent!")
 					elif data["action"] == "moveCar":
 						status_string = "Speed set to: " + str(data["speed"]) + ", Direction set to: " + str(data["direction"])
 						device_controller.move_configuration(int(data["speed"]), int(data["direction"]), int(data["id"]))
@@ -73,11 +79,9 @@ def main(settings):
 						printdt(status_string)
 					elif data["action"] == "createCar":
 						#TODO:::::SMARTER WAY FOR THIS, INCREMENT AND ADD
-						car_id = randint(0,1000)
+						car_id = randint(0,5000)
 						while(car_id in device_controller.configuration_ids):
 							car_id = randint(0,5000)
-						printdt(str(data["actuators"][0]))
-						printdt(str(len(data["actuators"])))
 						device_controller.create_car_configuration(car_id, data["actuators"])
 						device_controller.send_reply_message("Success", car_id)
 						printdt("Created car object with id: " + str(car_id))

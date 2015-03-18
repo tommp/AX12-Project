@@ -602,6 +602,8 @@ class Dynamixel (object):
             raise ValueError("Id must be in range 0 to 253")
         if value == self._id:
             return
+        if value == 200:
+            raise ValueError("Id cant be 200, reserved for controller")
         self._dyn_net.dynamixel_id_change(self, value)
         registerLength = self.register_length(AX12.Id)
         self._dyn_net.write_register(self._id,
