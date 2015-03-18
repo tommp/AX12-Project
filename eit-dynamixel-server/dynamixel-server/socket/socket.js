@@ -23,7 +23,6 @@ socket.server = net.createServer(function(connection){
         if(Object.keys(device_data)[0] == 'name'){
             var new_id = String(socket.gen_new_id());
             devices[new_id] = [device_data.name, connection];
-            console.log(devices);
         }
 
     })
@@ -46,7 +45,12 @@ socket.get_all_connections = function(){
 };
 
 socket.get_connection = function(id){
-    return (devices[id])[1];
+    if(devices.hasOwnProperty(String(id))){
+        return (devices[id])[1];
+    }
+    else{
+        return undefined;
+    }
 };
 
 socket.get_all_device_names = function(){
@@ -67,7 +71,7 @@ socket.get_device_id = function(name){
             return ObjectKeys[i];
         }
     }
-    return -1;
+    return undefined;
 };
 
 module.exports = socket;
