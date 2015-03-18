@@ -1,0 +1,52 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamo demo</title>
+  <link rel="stylesheet" href="foundation/foundation.min.css" />
+  <script src="foundation/modernizr.js"></script>
+</head>
+
+<body>
+
+<div class="columns">
+  <h5>(Slider for å justere hastighet)</h5>
+  <div class="small-10 medium-11 columns">
+    <div id="slider1" class="range-slider vertical-range" data-slider data-options="vertical: true; display_selector: #sliderOutput1; start: -100; end: 100;">
+      <span class="range-slider-handle" role="slider" tabindex="0"></span>
+      <span class="range-slider-active-segment"></span>
+    </div>
+  </div>
+  <div class="columns">
+    <span id="sliderOutput1"></span>
+  </div>
+</div>
+
+<div class="columns">
+  <h5>(Slider for å svinge)</h5>
+  <div class="small-10 medium-11 columns">
+    <div id="slider2" class="range-slider" data-slider data-options="start: -100; end: 100; display_selector: #sliderOutput2;">
+      <span class="range-slider-handle" role="slider" tabindex="0"></span>
+      <span class="range-slider-active-segment"></span>
+    </div>
+  </div>
+  <div class="small-2 medium-1 columns">
+    <span id="sliderOutput2"></span>
+  </div>
+</div>
+
+ <ul class="button-group">
+  <!--<li><a id="startButton" href="#" class="medium success button">START</a></li> -->
+  <li><a id="stopButton" href="#" class="medium alert button">STOP</a></li>
+</ul>
+
+
+<script src="foundation/jquery.js"></script>
+    <script src="foundation/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  	<script src="control.js"></script>
+</body>
+</html>
