@@ -744,31 +744,32 @@ class Dynamixel (object):
 
     def _return_json_status(self):
         status={}
-        status["setvalues"] = {}
-        status["getvalues"] = {}
-        status["setvalues"]["id"] = self._id
-        status["getvalues"]["current_position"] = self._get_register_value(AX12.CurrentPosition)
-        status["setvalues"]["goal_position"] = self._get_register_value(AX12.GoalPosition)
-        status["getvalues"]["moving"] = self._get_register_value(AX12.Moving)
-        status["setvalues"]["moving_speed"] = self._get_register_value(AX12.MovingSpeed)
-        status["setvalues"]["baudrate"] = self._get_register_value(AX12.BaudRate)
-        status["setvalues"]["cw_angle_limit"] = self._get_register_value(AX12.CWAngleLimit)
-        status["setvalues"]["ccw_angle_limit"] = self._get_register_value(AX12.CCWAngleLimit)
-        status["getvalues"]["current_load"] = self._get_register_value(AX12.CurrentLoad)
-        status["getvalues"]["current_speed"] = self._get_register_value(AX12.CurrentSpeed)
-        status["getvalues"]["current_temperature"] = self._get_register_value(AX12.CurrentTemperature)
-        status["setvalues"]["temperature_limit"] = self._get_register_value(AX12.TemperatureLimit)
-        status["getvalues"]["current_voltage"] = self._get_register_value(AX12.CurrentVoltage)/10
-        status["setvalues"]["torque_enable"] = self._get_register_value(AX12.TorqueEnable)
-        status["setvalues"]["max_torque"] = self._get_register_value(AX12.MaxTorque)
-        status["getvalues"]["firmware_version"] = self._get_register_value(AX12.FirmwareVersion)
-        status["setvalues"]["led"] = self._get_register_value(AX12.LED)
-        status["getvalues"]["high_voltage_limit"] = self._get_register_value(AX12.HighVoltageLimit)/10.0
-        status["getvalues"]["low_voltage_limit"] = self._get_register_value(AX12.LowVoltageLimit)/10.0
-        status["getvalues"]["model_number"] = self._get_register_value(AX12.ModelNumber)
-        status["setvalues"]["torque_limit"] = self._get_register_value(AX12.TorqueLimit)
+        status = {}
+
+        status["goal_position"] = self._get_register_value(AX12.GoalPosition)
+        status["moving_speed"] = self._get_register_value(AX12.MovingSpeed)
+        status["baudrate"] = self._get_register_value(AX12.BaudRate)
+        status["cw_angle_limit"] = self._get_register_value(AX12.CWAngleLimit)
+        status["ccw_angle_limit"] = self._get_register_value(AX12.CCWAngleLimit)
+        status["torque_limit"] = self._get_register_value(AX12.TorqueLimit)
+        status["torque_enable"] = self._get_register_value(AX12.TorqueEnable)
+        status["max_torque"] = self._get_register_value(AX12.MaxTorque)
+        status["temperature_limit"] = self._get_register_value(AX12.TemperatureLimit)
+        status["led"] = self._get_register_value(AX12.LED)
+
+        status["id"] = self._id
+        status["high_voltage_limit"] = self._get_register_value(AX12.HighVoltageLimit)/10.0
+        status["low_voltage_limit"] = self._get_register_value(AX12.LowVoltageLimit)/10.0
+        status["model_number"] = self._get_register_value(AX12.ModelNumber)
+        status["current_position"] = self._get_register_value(AX12.CurrentPosition)
+        status["moving"] = self._get_register_value(AX12.Moving)
+        status["current_load"] = self._get_register_value(AX12.CurrentLoad)
+        status["current_speed"] = self._get_register_value(AX12.CurrentSpeed)
+        status["current_temperature"] = self._get_register_value(AX12.CurrentTemperature)
+        status["current_voltage"] = self._get_register_value(AX12.CurrentVoltage)/10
+        status["firmware_version"] = self._get_register_value(AX12.FirmwareVersion)
         #Alarms
-        status["setvalues"]["alarm_led"] = self._get_register_value(AX12.AlarmLED)
-        status["setvalues"]["alarm_shutdown"] = self._get_register_value(AX12.AlarmShutdown)
+        status["alarm_led"] = self._get_register_value(AX12.AlarmLED)
+        status["alarm_shutdown"] = self._get_register_value(AX12.AlarmShutdown)
 
         return status
