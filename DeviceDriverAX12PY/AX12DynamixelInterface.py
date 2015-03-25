@@ -15,12 +15,12 @@ def main(settings):
 
 	#SERVER_IP = 'vsop.online.ntnu.no'
 	#SERVER_IP = '78.91.4.158'
-	SERVER_IP = '78.91.49.219'
+	SERVER_IP = '78.91.51.239'
 	SERVER_PORT = 9001
 	SERVER_CONN = (SERVER_IP, SERVER_PORT)
 
 	#-1 for infinite
-	NUMBER_OF_CONNECTION_ATTEMPTS = 0
+	NUMBER_OF_CONNECTION_ATTEMPTS = -1
 	#In seconds
 	DELAY_BETWEEN_ATTEMPTS = 1
 
@@ -60,14 +60,11 @@ def main(settings):
 				try:
 					#Loads the data into a (json)dict
 					data = json.loads(json_data)
-					
 					if data["action"] == "info":
-						objects = data["actuators"]
 						return_status = {}
-						return_status["name"] = device_controller.name
-						for dynamo in objects:
-							return_status[dynamo["id"]] = device_controller.net[int(dynamo["id"])]._return_json_status()
 						printdt("Sending info packets..")
+						device_controller.send_reply_message("success", 
+							device_controller.net[int(data["actuatorId"])]._return_json_status())
 						device_controller.clientsocket.send(json.dumps(return_status))
 						printdt("Info packets sent!")
 
@@ -75,42 +72,63 @@ def main(settings):
 						device_controller.send_ids()
 						printdt("Id info packet sent!")
 
-					elif data["action"] == "moveCar":
+					elif data["action"] == "moveDevice":
 						status_string = "Speed set to: " + str(data["speed"]) + ", Direction set to: " + str(data["direction"])
 						device_controller.move_configuration(int(data["speed"]), int(data["direction"]), int(data["id"]))
-						device_controller.send_reply_message("Success", status_string)
-						printdt(status_string)
+						device_controller.send_reply_message("success", status_string)
+						sys.stdout.write(status_string + '\r')
+						sys.stdout.flush()
 
 					elif data["action"] == "createCar":
-						#TODO:::::SMARTER WAY FOR THIS, INCREMENT AND ADD
-						car_id = randint(0,5000)
+						car_id = 0
 						while(car_id in device_controller.configuration_ids):
-							car_id = randint(0,5000)
+							car_id +=1
 						device_controller.create_car_configuration(errorlog, car_id, data["actuators"])
-						device_controller.send_reply_message("Success", car_id)
+						device_controller.send_reply_message("success", car_id)
 						printdt("Created car object with id: " + str(car_id))
 
 					elif data["action"] == "shutdown":
 						printdt("Recieved quit command, shutting down!")
 						errorlog.close_log()
 						sys.exit()
-						
+
 					else:
 						errorlog.write("ERROR: Recieved command with wrong protocol format")
 						printdt("ERROR: Recieved command with wrong protocol format")
 						device_controller.send_reply_message("ERROR","Wrong protocol format!")
 				#Handles potential valuerrors in the socket data
-				except ValueError:
+				except ValueError, error:
 					try:
-						device_controller.send_reply_message("VALUE ERROR","Unable to parse json on string: " + 
-							json_data)
-						errorlog.write("VALUE ERROR: Unable to parse json on string: " + 
-							json_data)
-						printdt("Unable to parse json on string, assuming text message, data: " + json_data)
+						device_controller.send_reply_message("VALUE ERROR","Unable to parse json in string: " + 
+							json_data + "\nError details: " + repr(error))
+						errorlog.write("VALUE ERROR: Unable to parse json in string: " + 
+							json_data + "\nError details: " + repr(error))
+						printdt("Unable to parse json in string, assuming text message, data: " + 
+							json_data + "\nError details: " + repr(error))
 					except:
 						device_controller.send_reply_message("VALUE ERROR", "Recieved data was corrupt")
 						errorlog.write("VALUE ERROR: Recieved data was corrupt")
 						printdt("Recieved data was corrupt!")
+				except KeyError, error:
+					try: 
+						device_controller.send_reply_message("KEY ERROR","Invalid key in JSON object: " + 
+							json_data + "\nError details: " + error)
+						errorlog.write("KEY ERROR: Invalid key in JSON object: " + 
+							json_data + "\nError details: " + error)
+						printdt("KEY ERROR: Invalid key in JSON object: " + 
+							json_data + "\nError details: " + error)
+					except:
+						device_controller.send_reply_message("KEY ERROR", "Recieved data was corrupt" + 
+							"\nError details: " + error)
+						errorlog.write("KEY ERROR: Recieved data was corrupt" + 
+							"\nError details: " + error)
+						printdt("KEY ERROR: Recieved data was corrupt!" + 
+							"\nError details: " + error)
+				except:
+					device_controller.send_reply_message("UNEXPECTED ERROR", "Recieved data might be corrupt")
+					errorlog.write("UNEXPECTED ERROR: Recieved data might be corrupt")
+					printdt("UNEXPECTED ERROR: Recieved data might be corrupt!")
+
 		#Manual menu
 		else:
 			while(True):

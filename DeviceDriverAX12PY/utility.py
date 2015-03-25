@@ -98,7 +98,7 @@ class Car_configuration:
 				self.net[actuator_id].moving_speed = 1024
 		
 
-
+#TODO::RENAME TO LOG
 class ErrorLogger:
 	def __init__(self, logfile):
 		try:
@@ -245,6 +245,7 @@ class DeviceController:
 	def establish_connection(self,errorlog, server_conn, num_conn_attempts, conn_attempt_delay):
 		if num_conn_attempts <= 0:
 			while (not self.connected):
+				self.clientsocket.settimeout(5)
 				try:
 					printdt("Attempting to connect to remote...")
 					self.clientsocket.connect(server_conn)
@@ -256,6 +257,7 @@ class DeviceController:
 				time.sleep(conn_attempt_delay)
 		else:
 			for i in range(num_conn_attempts):
+				self.clientsocket.settimeout(5)
 				try:
 					printdt("Attempting to connect to remote...")
 					self.clientsocket.connect(server_conn)
@@ -267,6 +269,7 @@ class DeviceController:
 					errorlog.write("ERROR: Failed to connect to remote server, retrying")
 					printdt("ERROR: Failed to connect to remote server, retrying")
 				time.sleep(conn_attempt_delay)
+		self.clientsocket.settimeout(None)
 
 	def send_reply_message(self, status, message):
 		status_packet={}
