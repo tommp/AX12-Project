@@ -16,7 +16,7 @@ public class Connection {
     public Connection(String url, String deviceName){
         this.url = url;
 
-        deviceID = getDeviceID(sendGetMessage("device/" + deviceName, false));
+        deviceID = getDeviceID(sendGetMessage("devicename/" + deviceName, false));
     }
 
     public String sendPostMessage(String message){

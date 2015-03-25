@@ -11,9 +11,8 @@
 <body>
 
 <div class="columns">
-  <h5>(Slider for å justere hastighet)</h5>
   <div class="small-10 medium-11 columns">
-    <div id="slider1" class="range-slider vertical-range" data-slider data-options="vertical: true; display_selector: #sliderOutput1; start: -100; end: 100;">
+    <div id="slider1" class="range-slider vertical-range" data-slider data-options="vertical: true; display_selector: #sliderOutput1; start: -100; end: 100; step: 5;">
       <span class="range-slider-handle" role="slider" tabindex="0"></span>
       <span class="range-slider-active-segment"></span>
     </div>
@@ -24,9 +23,8 @@
 </div>
 
 <div class="columns">
-  <h5>(Slider for å svinge)</h5>
   <div class="small-10 medium-11 columns">
-    <div id="slider2" class="range-slider" data-slider data-options="start: -100; end: 100; display_selector: #sliderOutput2;">
+    <div id="slider2" class="range-slider" data-slider data-options="start: -100; end: 100; step: 5; display_selector: #sliderOutput2;">
       <span class="range-slider-handle" role="slider" tabindex="0"></span>
       <span class="range-slider-active-segment"></span>
     </div>
@@ -35,11 +33,39 @@
     <span id="sliderOutput2"></span>
   </div>
 </div>
+<div class="columns">
+  <div class="small-10 medium-11 columns">
+    <p id="status">Status</p>
+  </div>
+</div>
+
 
  <ul class="button-group">
   <!--<li><a id="startButton" href="#" class="medium success button">START</a></li> -->
   <li><a id="stopButton" href="#" class="medium alert button">STOP</a></li>
 </ul>
+
+<div class="columns">
+  <div class="small-10 medium-11 columns">
+    <p id="information">Data</p>
+  </div>
+</div>
+
+
+<div class="columns">
+  <div class="small-10 medium-11 columns">
+    <table id="informationTable">
+      <thead>
+        <th>Field</th>
+        <th>Value</th>
+      </thead>
+      <tbody id="tableBody">
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+
 
 
 <script src="foundation/jquery.js"></script>
