@@ -6,6 +6,7 @@ var devices = {};
 
 socket.server = net.createServer(function(connection){
     console.log("client connected");
+
     connection.on('end', function(){
         console.log("Device disconnected");
         var ObjectKeys = Object.keys(devices);
@@ -19,13 +20,17 @@ socket.server = net.createServer(function(connection){
     });
 
     connection.on('data', function(data){
-        var device_data = JSON.parse(data.toString());
-        if(Object.keys(device_data)[0] == 'name'){
-            var new_id = String(socket.gen_new_id());
-            devices[new_id] = [device_data.name, connection];
+        try{
+            var device_data = JSON.parse(data.toString());
+            if(Object.keys(device_data)[0] == 'name'){
+                var new_id = String(socket.gen_new_id());
+                devices[new_id] = [device_data.name, connection];
+            }
+        }catch(error){
+            console.log("Error: " + error.message);
         }
 
-    })
+    });
 });
 
 socket.gen_new_id = function(){
