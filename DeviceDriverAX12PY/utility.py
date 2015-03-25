@@ -167,6 +167,45 @@ class DeviceController:
 			
 		self.net.synchronize()
 
+	def check_if_ids_in_network(self, servo_ids):
+		invalid_servos = []
+		net_ids = []
+
+		for actuator in self.net.get_dynamixels():
+			net_ids.append(actuator.id)
+
+		for servo in servo_ids:
+			if servo not in net_ids:
+				invalid_servos.append(servo)
+				printdt("ERROR: Requested id not in dynamixel network: " + str(servo))
+				errorlog.write("ERROR: Requested id not in dynamixel network: " + str(servo))
+
+		return invalid_servos
+
+	def set_angle_limits(self, servos):
+		servo_ids = []
+
+		for servo in servos:
+			servo_ids.append(servo["id"])
+
+		invalid_servos = self.check_if_ids_in_network(servo_ids)
+
+		if not invalid_servos:
+			for servo in servos:
+				self.net[servo["id"]].ccw_angle_limit = servo["counterclockwise"]
+				self.net[servo["id"]].cw_angle_limit = servo["clockwise"]
+				printdt("Set ccw limit to: " + str(servo["counterclockwise"]) + 
+									", set cw limit to: " + str(servo["clockwise"]))
+			device_controller.send_reply_message("success",  "Angle limits set!")
+			printdt("Angle limits set!")
+		else:
+			status_string = "Requested id(s) not in dynamixel network: "
+			for invalid_servo in invalid_servos:
+				status_string += str(invalid_servo) + ", "
+			printdt(status_string)
+			device_controller.send_reply_message("error",  status_string)
+
+
 	def send_ids(self):
 		return_status = {}
 		return_status["name"] = self.name
@@ -181,23 +220,11 @@ class DeviceController:
 
 		self.configuration_ids.append(conf_id)
 
-		request_ok = True
-		invalid_servos = []
-		net_ids = []
-
-		for actuator in self.net.get_dynamixels():
-			net_ids.append(actuator.id)
-
 		printdt("Creating car configuration with id: " + str(conf_id) + "...")
 
-		for servo in servo_ids:
-			if servo not in net_ids:
-				request_ok = False
-				invalid_servos.append(servo)
-				printdt("ERROR: Requested id not in dynamixel network: " + str(servo))
-				errorlog.write("ERROR: Requested id not in dynamixel network: " + str(servo))
+		invalid_servos = self.check_if_ids_in_network(servo_ids)
 
-		if not request_ok:
+		if invalid_servos:
 			status_string = "Requested id(s) not in dynamixel network: "
 			for invalid_servo in invalid_servos:
 				status_string += str(invalid_servo) + ", "
