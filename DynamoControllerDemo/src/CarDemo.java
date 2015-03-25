@@ -9,7 +9,7 @@ import objects.Response;
 
 public class CarDemo {
 
-    private static final String URL = "http://78.91.49.219:9002";
+    private static final String URL = "http://78.91.51.239:9002";
     //private static final String URL = "http://vsop.online.ntnu.no:9002";
     private static final String DEVICE_NAME = "ruls";
 
@@ -70,7 +70,7 @@ public class CarDemo {
 
     private static String generateMoveCarMessage(int speed, int direction){
 
-        Action action = new Action("moveCar", carId, speed, direction);
+        Action action = new Action("moveDevice", carId, speed, direction);
 
         return JSONConverter.toJson(action);
     }

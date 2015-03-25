@@ -1,48 +1,52 @@
 
-//var URL = "http://78.91.49.219:9002/devices";
-var URL = "http://vsop.online.ntnu.no:9002";
+var URL = "http://78.91.51.239:9002";
+//var URL = "http://vsop.online.ntnu.no:9002";
 var deviceName = "ruls";
-var carActuators = [1, 2, 3, 4];
+var carActuators = [2, 4];
 
 var speedSlider = 0;
 var directionSlider = 0;
 var deviceID = -1;
 var carID = -1;
-
-
-
-var sendGetMessage = function(param){
-	$.ajax({url: URL + "/" + param, success: function(result){
-        console.log(result["message"]);
-    }});
-}
-
-var sendPostMessage = function(param, message){
-	$.ajax({url: URL + "/" + param, type: "POST", data: message, success: function(result){
-        return result;
-    }});
-}
+var informationInterval;
 
 
 var setDeviceId = function(){
-	$.ajax({url: URL + "/device/" + deviceName, success: function(result){
+	$("#status").html("Getting device id...");
+	$.ajax({url: URL + "/devicename/" + deviceName, success: function(result){
     	if(result["status"] == "success"){
     		deviceID = result["message"];
+    		$("#status").html("Device id set: " + deviceID);
+    		createCar();
     	}
     	else{
     		console.error(result["message"]);
+    		$("#status").html("Error: " + result["message"]);
     	}
     }});
 }
 
 var createCar = function(){
 
-	var message = '{"action": "createCar", "actuators": ' + carActuators + '}'
+	$("#status").html("Creating car...");
 
-	console.log(message);
+	var message = new Object();
 
-	$.ajax({url: URL + "/device/" + deviceID, type: "POST", data: message, success: function(result){
-        console.log(result);
+	message.action = "createCar";
+	message.actuators = carActuators;
+
+	console.log(JSON.stringify(message));
+
+	$.ajax({url: URL + "/device/" + deviceID, type: "POST", data: JSON.stringify(message), contentType: 'application/json; charset=utf-8', dataType: "json", success: function(result){
+
+        if(result["status"] == "success"){
+        	carID = result["message"];
+        	$("#status").html("Car created: " + carID);
+        }
+        else{
+        	console.log(result);
+        	$("#status").html("Error getting car id: " + result["message"]);
+        }
     }});
 }
 
@@ -56,26 +60,81 @@ $(document).foundation({
     	if(newSliderValue != speedSlider){
     		speedSlider = newSliderValue;
 
-    		$.ajax({url: URL + "/" + param, success: function(result){
+    		var message = new Object();
+
+    		message.action = "moveDevice"
+    		message.id = carID
+    		message.speed = speedSlider
+    		message.direction = directionSlider;
+
+    		console.log(JSON.stringify(message))
+
+    		$.ajax({url: URL + "/device/" + deviceID, type: "POST", data: JSON.stringify(message), contentType: 'application/json; charset=utf-8', dataType: "json", success: function(result){
 		        console.log(result["message"]);
 		    }});
-    		console.log(speedSlider);
     	}
 
 
     	var newSliderValue = $('#slider2').attr('data-slider');
 
-    	if(newSliderValue != directionSlider){
+    	if(newSliderValue != directionSlider && speedSlider != 0){
     		directionSlider = newSliderValue;
 
-    		//send ajax
-    		console.log(directionSlider);
+    		var message = new Object();
+
+    		message.action = "moveDevice"
+    		message.id = carID
+    		message.speed = speedSlider
+    		message.direction = directionSlider;
+
+    		console.log(JSON.stringify(message))
+
+    		$.ajax({url: URL + "/device/" + deviceID, type: "POST", data: JSON.stringify(message), contentType: 'application/json; charset=utf-8', dataType: "json", success: function(result){
+		        console.log(result["message"]);
+		    }});
     	}
     }
   }
 });
 
 $("#stopButton").click(function(){
+	$('#slider2').foundation('slider', 'set_value', 0);
 	$('#slider1').foundation('slider', 'set_value', 0);
-	setDeviceId();
+
+	clearInterval(informationInterval);
 });
+
+var updateTable = function(data){
+	$("#tableBody tr").remove();
+
+	var keys = Object.keys(data)
+
+	for(var i = 0; i < keys.length; i++){
+		$("#tableBody").append("<tr><td>" + keys[i] + "</td><td>" + data[keys[i]] + "</td></tr>");
+	}
+}
+
+var updateInformation = function(){
+	$.ajax({url: URL + "/device/" + deviceID + "/actuator/" + 2 , dataType: "json", success: function(result){
+    	if(result["status"] == "success"){
+    		message = result["message"];
+
+			updateTable(message);
+
+    		$("#information").html(JSON.stringify(message));
+    	}
+    	else{
+    		console.error(JSON.stringify(result));
+    		$("#information").html("Error: " + result["message"]);
+    	}
+    }});
+}
+
+$( document ).ready(function() {
+  setDeviceId();
+  informationInterval = setInterval(updateInformation, 1000);
+});
+
+
+
+
