@@ -7,7 +7,7 @@ sudo apt-get install gnome-schedule
 #Write out current crontab
 crontab -l > tmpcron
 #echo new cron into cron file
-echo "@reboot sh /home/pi/EIT/DeviceDriverAX12PY/startup.py" >> tmpcron
+echo "@reboot sh /home/pi/EIT/DeviceDriverAX12PY/startup.py >/home/pi/logs/cronlog 2>&1" >> tmpcron
 #Install new cron file
 sudo crontab -e mycron
 #Delete temp
@@ -16,5 +16,8 @@ rm mycron
 #Enable cronjobs on startup
 update-rc.d cron defaults
 
-#Starts the driver
-sudo ./startup.sh
+chmod 755 startup.sh
+
+cd /
+
+mkdir logs
