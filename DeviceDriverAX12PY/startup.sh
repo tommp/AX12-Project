@@ -1,8 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 cd /
-
-cd "$(dirname "$0")"
+cd /home/pi/EIT/DeviceDriverAX12PY
 
 sudo python AX12DynamixelInterface.py
 

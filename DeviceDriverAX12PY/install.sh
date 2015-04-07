@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #Install crontab if it is not present
 sudo apt-get install gnome-schedule
@@ -17,4 +17,4 @@ rm mycron
 update-rc.d cron defaults
 
 #Starts the driver
-sudo sh startup.sh
+sudo ./startup.sh
