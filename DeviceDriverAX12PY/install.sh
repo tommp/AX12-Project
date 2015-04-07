@@ -13,5 +13,8 @@ sudo crontab -e mycron
 #Delete temp
 rm mycron
 
+#Enable cronjobs on startup
+update-rc.d cron defaults
+
 #Starts the driver
-sh startup.sh
+sudo sh startup.sh
