@@ -195,7 +195,8 @@ class DeviceController:
 				self.net[servo["id"]].ccw_angle_limit = servo["counterclockwise"]
 				self.net[servo["id"]].cw_angle_limit = servo["clockwise"]
 				printdt("Set ccw limit to: " + str(servo["counterclockwise"]) + 
-									", set cw limit to: " + str(servo["clockwise"]))
+									", set cw limit to: " + str(servo["clockwise"]) + ", for servo: " + 
+									str(servo["id"]))
 			device_controller.send_reply_message("success",  "Angle limits set!")
 			printdt("Angle limits set!")
 		else:
