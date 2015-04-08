@@ -6,6 +6,7 @@ var devices = {};
 
 socket.server = net.createServer(function(connection){
     console.log("client connected");
+    console.log(connection.remoteAddress);
 
     connection.on('end', function(){
         console.log("Device disconnected");
