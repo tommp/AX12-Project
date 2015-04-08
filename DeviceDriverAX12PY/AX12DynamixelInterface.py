@@ -13,9 +13,9 @@ from random import randint
 
 def main(settings):
 
-	#SERVER_IP = 'vsop.online.ntnu.no'
+	SERVER_IP = 'vsop.online.ntnu.no'
 	#SERVER_IP = '78.91.4.158'
-	SERVER_IP = '78.91.51.239'
+	#SERVER_IP = '78.91.51.239'
 	SERVER_PORT = 9001
 	SERVER_CONN = (SERVER_IP, SERVER_PORT)
 

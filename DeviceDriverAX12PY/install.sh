@@ -1,7 +1,11 @@
 #!/bin/bash
 
 #Install crontab if it is not present
-sudo apt-get install gnome-schedule
+sudo apt-get --assume-yes install gnome-schedule
+sudo apt-get --assume-yes install network-manager-gnome
+sudo apt-get --assume-yes install wpasupplicant
+
+sudo /etc/init.d/dbus restart
 
 #The following lines makes a cronjob that automatically starts the python device driver scipt on reboot
 #Write out current crontab
