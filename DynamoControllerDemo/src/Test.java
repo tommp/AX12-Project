@@ -5,7 +5,7 @@ import objects.Actuator;
 
 public class Test {
 
-    private static final String URL = "http://78.91.49.219:9002";
+    private static final String URL = "http://78.91.51.239:9002";
     //private static final String URL = "http://vsop.online.ntnu.no:9002";
     private static final String DEVICE_NAME = "ruls";
 
@@ -16,12 +16,15 @@ public class Test {
 //        objects.Car responseCar = (objects.Car) JSONConverter.fromJson(json, objects.Car.class);
 //        System.out.println(responseCar);
 
-//        Actuator actuator1 = new Actuator(2, 50);
-//        Actuator actuator2 = new Actuator(4, 20);
+        Actuator actuator1 = new Actuator(2, 40, 100);
+        Actuator actuator2 = new Actuator(4, 140, 200);
+
+        Action action = new Action("setAngleLimit", new Actuator[] {actuator1, actuator2});
 //
-//        Action action = new Action("move", new Actuator[] {actuator1, actuator2});
-//
-//        System.out.println(JSONConverter.toJson(action));
+        System.out.println(JSONConverter.toJson(action));
+
+        Connection connection = new Connection(URL, DEVICE_NAME);
+        connection.sendPostMessage(JSONConverter.toJson(action));
 
 
 //        Controller.dllPath = System.getProperty("user.dir") + "\\libs";
@@ -36,8 +39,5 @@ public class Test {
 //            }
 //        }
 
-        Connection connection = new Connection(URL, DEVICE_NAME);
-
-        System.out.println(connection.sendGetMessage("actuators", true));
     }
 }

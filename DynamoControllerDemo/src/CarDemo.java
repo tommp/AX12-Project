@@ -9,8 +9,8 @@ import objects.Response;
 
 public class CarDemo {
 
-    private static final String URL = "http://78.91.51.239:9002";
-    //private static final String URL = "http://vsop.online.ntnu.no:9002";
+    //private static final String URL = "http://78.91.51.239:9002";
+    private static final String URL = "http://vsop.online.ntnu.no:9002";
     private static final String DEVICE_NAME = "ruls";
 
     private static int RIGHT_ANALOG_MAX_VALUE = 24078;

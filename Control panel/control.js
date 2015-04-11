@@ -60,6 +60,12 @@ $(document).foundation({
     	if(newSliderValue != speedSlider){
     		speedSlider = newSliderValue;
 
+    		speedometerValue = speedSlider;
+    		if (speedometerValue < 0)
+    			speedometerValue *= -1;
+
+    		$('#speedometer').speedometer({ percentage: speedometerValue || 0 });
+
     		var message = new Object();
 
     		message.action = "moveDevice"
@@ -131,8 +137,10 @@ var updateInformation = function(){
 }
 
 $( document ).ready(function() {
-  setDeviceId();
-  informationInterval = setInterval(updateInformation, 1000);
+	$(document).foundation();
+	$('#speedometer').speedometer();
+  	setDeviceId();
+  	informationInterval = setInterval(updateInformation, 1000);
 });
 
 
