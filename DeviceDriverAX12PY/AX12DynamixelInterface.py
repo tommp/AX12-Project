@@ -13,9 +13,9 @@ from random import randint
 
 def main(settings):
 
-	#SERVER_IP = 'vsop.online.ntnu.no'
+	SERVER_IP = 'vsop.online.ntnu.no'
 	#SERVER_IP = '78.91.4.158'
-	SERVER_IP = '78.91.51.239'
+	#SERVER_IP = '78.91.51.239'
 	SERVER_PORT = 9001
 	SERVER_CONN = (SERVER_IP, SERVER_PORT)
 
@@ -58,7 +58,7 @@ def main(settings):
 				device_controller.restart_program()
 			if len(json_data) > 0:
 				try:
-					#Loads the data into a (json)dict
+					#Loads the data into a (json)dictHANDLE UNKNOWN IDS IN INFO
 					data = json.loads(json_data)
 					if data["action"] == "info":
 						return_status = {}
@@ -67,6 +67,10 @@ def main(settings):
 							device_controller.net[int(data["actuatorId"])]._return_json_status())
 						device_controller.clientsocket.send(json.dumps(return_status))
 						printdt("Info packets sent!")
+
+					elif data["action"] == "setAngleLimit":
+						servos = data["actuators"]
+						device_controller.set_angle_limits(servos)
 
 					elif data["action"] == "listActuators":
 						device_controller.send_ids()

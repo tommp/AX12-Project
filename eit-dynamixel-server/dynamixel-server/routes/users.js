@@ -19,7 +19,7 @@ router.get('/devices/', function(req, res) {
     res.send(responseData);
 });
 
-router.get('/device/:name', function(req, res){
+router.get('/devicename/:name', function(req, res){
     console.log('Someone requested a device id');
     var responseData;
     if(socket.get_device_id(req.params.name) == undefined){
@@ -38,7 +38,10 @@ router.get('/device/:name', function(req, res){
     res.status(200);
 });
 
+
+
 router.get('/device/:id/actuators', function(req,res){
+    console.log('Someone requested list of actuators');
     var connection = socket.get_connection(req.params.id);
     if(connection == undefined){
         res.send({status: "error", message: "Unknown ID"})
@@ -61,7 +64,26 @@ router.get('/device/:id/actuators', function(req,res){
     }
 });
 
+router.get('/device/:deviceID/actuator/:actuatorID', function(req, res){
+    console.log('Someone requested values for single actuator');
+    var connection = socket.get_connection(req.params.deviceID);
+    if(connection == undefined){
+        res.send({status: "error", message: "Unknown Device ID"})
+    }
+    else{
+        var device_data = {action: "info", actuatorId: req.params.actuatorID};
+        connection.write(JSON.stringify(device_data));
+        connection.on('data', function(data){
+            res.end(data);
+        });
+        setTimeout(function(){
+            res.end(JSON.stringify({status: "error", message: "Device timed out"}));
+        }, 2000);
+    }
+});
+
 router.post('/device/:id', function(req, res){
+    console.log("Someone posted a message to device");
     var connection = socket.get_connection(req.params.id);
     if(connection == undefined){
         res.send({status: "error", message: "Unknown ID"})
