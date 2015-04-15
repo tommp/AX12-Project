@@ -28,13 +28,7 @@ public class Connection {
             outputStream.flush();
             outputStream.close();
 
-
-            int responseCode = httpConnection.getResponseCode();
             String responseMessage = getResponseMessage(httpConnection);
-
-            System.out.println("Sent post message: " + message);
-            System.out.println("Response code: " + responseCode);
-            System.out.println("Response message: " + responseMessage);
 
             return responseMessage;
         } catch (IOException e) {

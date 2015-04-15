@@ -1,8 +1,8 @@
 
-var URL = "http://78.91.51.239:9002";
+var URL = "http://78.91.50.234:9002";
 //var URL = "http://vsop.online.ntnu.no:9002";
 var deviceName = "ruls";
-var carActuators = [2, 4];
+var carActuators = [2,4,1,3];
 
 var speedSlider = 0;
 var directionSlider = 0;
@@ -103,13 +103,6 @@ $(document).foundation({
   }
 });
 
-$("#stopButton").click(function(){
-	$('#slider2').foundation('slider', 'set_value', 0);
-	$('#slider1').foundation('slider', 'set_value', 0);
-
-	clearInterval(informationInterval);
-});
-
 var updateTable = function(data){
 	$("#tableBody tr").remove();
 
@@ -141,6 +134,13 @@ $( document ).ready(function() {
 	$('#speedometer').speedometer();
   	setDeviceId();
   	informationInterval = setInterval(updateInformation, 1000);
+
+  	$("#stopButton").click(function(){
+		$('#slider2').foundation('slider', 'set_value', 0);
+		$('#slider1').foundation('slider', 'set_value', 0);
+
+	clearInterval(informationInterval);
+});
 });
 
 

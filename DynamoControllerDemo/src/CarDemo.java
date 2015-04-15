@@ -9,8 +9,8 @@ import objects.Response;
 
 public class CarDemo {
 
-    //private static final String URL = "http://78.91.51.239:9002";
-    private static final String URL = "http://vsop.online.ntnu.no:9002";
+    private static final String URL = "http://78.91.50.234:9002";
+//    private static final String URL = "http://vsop.online.ntnu.no:9002";
     private static final String DEVICE_NAME = "ruls";
 
     private static int RIGHT_ANALOG_MAX_VALUE = 24078;
@@ -27,8 +27,8 @@ public class CarDemo {
         Controller.dllPath = System.getProperty("user.dir") + "\\libs";
         Controller controller = new Controller(0, 50);
 
-        //String responseString = connection.sendPostMessage(createCarMessage(1,2,3,4));
-        String responseString = connection.sendPostMessage(createCarMessage(2,4, 0, 0));
+        String responseString = connection.sendPostMessage(createCarMessage(2,4 ,1,3));
+        //String responseString = connection.sendPostMessage(createCarMessage(2,4, 0, 0));
 
         Response response = (Response) JSONConverter.fromJson(responseString, Response.class);
 
@@ -108,7 +108,7 @@ public class CarDemo {
                 if(rightTriggerValue != 0 || lastRightTriggerValue != 0) {
                     lastRightTriggerValue = rightTriggerValue;
                     int speed = getPercentage(rightTriggerValue, ANALOG_TRIGGER_MAX);
-                    int direction = getPercentage(controller.getAnalogValue(Analog.rightStickX), RIGHT_ANALOG_MAX_VALUE);
+                    int direction = getPercentage(controller.getAnalogValue(Analog.leftStickX), LEFT_ANALOG_MAX_VALUE);
 
                     String message = generateMoveCarMessage(speed, direction);
                     connection.sendPostMessage(message);
@@ -116,7 +116,7 @@ public class CarDemo {
                 else if(leftTriggerValue != 0 || lastLeftTriggerValue != 0) {
                     lastLeftTriggerValue = leftTriggerValue;
                     int speed = getPercentage(leftTriggerValue * -1, ANALOG_TRIGGER_MAX);
-                    int direction = getPercentage(controller.getAnalogValue(Analog.rightStickX), RIGHT_ANALOG_MAX_VALUE);
+                    int direction = getPercentage(controller.getAnalogValue(Analog.leftStickX), LEFT_ANALOG_MAX_VALUE);
 
                     String message = generateMoveCarMessage(speed, direction);
                     connection.sendPostMessage(message);
