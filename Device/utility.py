@@ -13,7 +13,7 @@ class Car_configuration:
 	def __init__(self, left_actuator_cluster, right_actuator_cluster, net):
 		self.right_actuator_cluster = right_actuator_cluster
 		self.left_actuator_cluster = left_actuator_cluster
-		self.speed_scale = 6
+		self.speed_scale = 8
 		self.net = net
 
 	def reset_speed(self):
@@ -167,8 +167,8 @@ class DeviceController:
 			actuator._set_to_wheel_mode()
 			actuator.moving_speed = 1024
 			actuator.torque_enable = False
-			actuator.torque_limit = 900
-			actuator.max_torque = 900
+			actuator.torque_limit = 1023
+			actuator.max_torque = 1023
 			actuator.goal_position = 512
 			
 		self.net.synchronize()
