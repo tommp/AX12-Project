@@ -11,7 +11,7 @@ sudo /etc/init.d/dbus restart
 #Write out current crontab
 crontab -l > tmpcron
 #echo new cron into cron file
-echo "@reboot sh /home/pi/EIT/DeviceDriverAX12PY/startup.py >/home/pi/logs/cronlog 2>&1" >> tmpcron
+echo "@reboot sh /home/pi/EIT/Device/startup.py >/home/pi/logs/cronlog 2>&1" >> tmpcron
 #Install new cron file
 sudo crontab -e mycron
 #Delete temp

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd /
-cd /home/pi/EIT/DeviceDriverAX12PY/
+cd /home/pi/EIT/Device/
 
 sudo python AX12DynamixelInterface.py
 
