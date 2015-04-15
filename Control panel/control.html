@@ -5,74 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dynamo demo</title>
   <link rel="stylesheet" href="foundation/foundation.min.css" />
+  <link rel="stylesheet" href="custom.css" />  
   <script src="foundation/modernizr.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>    
+  <script src="speedometer/jquery.speedometer.js"></script>
+  <script src="speedometer/jquery.jqcanvas-modified.js"></script>
+  <script src="speedometer/excanvas-modified.js"></script>
+  <script src="foundation/foundation.min.js"></script>
+  <script src="control.js"></script>
 </head>
 
 <body>
 
-<div class="columns">
-  <div class="small-10 medium-11 columns">
-    <div id="slider1" class="range-slider vertical-range" data-slider data-options="vertical: true; display_selector: #sliderOutput1; start: -100; end: 100; step: 5;">
+<div class="row">
+  <div class="small-6 columns small-centered">
+    <div class="speedomter-container">
+      <div id="speedometer"></div>
+    </div>
+    <div id="slider2" class="range-slider" data-slider data-options="start: -100; end: 100; step: 5;">
       <span class="range-slider-handle" role="slider" tabindex="0"></span>
       <span class="range-slider-active-segment"></span>
     </div>
   </div>
-  <div class="columns">
-    <span id="sliderOutput1"></span>
-  </div>
-</div>
-
-<div class="columns">
-  <div class="small-10 medium-11 columns">
-    <div id="slider2" class="range-slider" data-slider data-options="start: -100; end: 100; step: 5; display_selector: #sliderOutput2;">
+  <div class="small-2 columns">
+    <div id="slider1" class="range-slider vertical-range" data-slider data-options="vertical: true; start: -100; end: 100; step: 5;">
       <span class="range-slider-handle" role="slider" tabindex="0"></span>
       <span class="range-slider-active-segment"></span>
     </div>
   </div>
-  <div class="small-2 medium-1 columns">
-    <span id="sliderOutput2"></span>
-  </div>
-</div>
-<div class="columns">
-  <div class="small-10 medium-11 columns">
-    <p id="status">Status</p>
-  </div>
 </div>
 
+<div class="row">
+  <div class="small-12 columns">
+    <p id="status" class="centered">Status</p>
+  </div>
+</div>
 
- <ul class="button-group">
-  <!--<li><a id="startButton" href="#" class="medium success button">START</a></li> -->
-  <li><a id="stopButton" href="#" class="medium alert button">STOP</a></li>
-</ul>
-
-<div class="columns">
-  <div class="small-10 medium-11 columns">
-    <p id="information">Data</p>
+<div class="row">
+  <div class="small-4 medium-2  columns small-centered">
+    <a id="stopButton" href="#" class="medium alert button">STOP</a>
   </div>
 </div>
 
 
-<div class="columns">
-  <div class="small-10 medium-11 columns">
+<div class="row">
+  <div class="small-4 medium-2 columns small-centered">
     <table id="informationTable">
       <thead>
         <th>Field</th>
         <th>Value</th>
       </thead>
       <tbody id="tableBody">
-        
+        <tr>
+          <td>Test</td>
+          <td>Test2</td>
+        </tr>
       </tbody>
     </table>
   </div>
 </div>
-
-
-
-<script src="foundation/jquery.js"></script>
-    <script src="foundation/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
-  	<script src="control.js"></script>
 </body>
 </html>
