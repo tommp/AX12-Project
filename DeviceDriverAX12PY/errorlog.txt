@@ -1,0 +1,1736 @@
+Date: 11/03/2015
+Time: 14:45:49
+ERROR: Failed to connect to remote server, retrying
+
+Date: 11/03/2015
+Time: 14:45:59
+ERROR: Failed to connect to remote server, retrying
+
+Date: 11/03/2015
+Time: 15:06:08
+ERROR: Failed to connect to remote server, retrying
+
+Date: 11/03/2015
+Time: 15:06:10
+ERROR: Server socket connection failed
+
+Date: 18/03/2015
+Time: 11:12:12
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 11:12:13
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 11:14:42
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 11:16:35
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 11:16:41
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 11:17:25
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 11:17:29
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 12:04:55
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 12:05:09
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 13:04:48
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 13:19:16
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 13:23:40
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 13:45:29
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 13:46:41
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 13:51:05
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 13:54:28
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 14:02:26
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 14:10:39
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 14:16:39
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 14:18:20
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 14:20:13
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 14:35:02
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 14:36:40
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 14:36:44
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 14:53:28
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 14:53:55
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 14:54:57
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 14:56:09
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 14:57:11
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 14:58:47
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 15:07:30
+ERROR: Failed to connect to remote server, retrying
+
+Date: 18/03/2015
+Time: 15:12:35
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 10:57:40
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 11:34:28
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 11:35:43
+ERROR: Requested id not in dynamixel network: [
+
+Date: 25/03/2015
+Time: 11:35:43
+ERROR: Requested id not in dynamixel network: 1
+
+Date: 25/03/2015
+Time: 11:35:43
+ERROR: Requested id not in dynamixel network: ,
+
+Date: 25/03/2015
+Time: 11:35:43
+ERROR: Requested id not in dynamixel network:  
+
+Date: 25/03/2015
+Time: 11:35:43
+ERROR: Requested id not in dynamixel network: 2
+
+Date: 25/03/2015
+Time: 11:35:43
+ERROR: Requested id not in dynamixel network: ,
+
+Date: 25/03/2015
+Time: 11:35:43
+ERROR: Requested id not in dynamixel network:  
+
+Date: 25/03/2015
+Time: 11:35:43
+ERROR: Requested id not in dynamixel network: 3
+
+Date: 25/03/2015
+Time: 11:35:43
+ERROR: Requested id not in dynamixel network: ,
+
+Date: 25/03/2015
+Time: 11:35:43
+ERROR: Requested id not in dynamixel network:  
+
+Date: 25/03/2015
+Time: 11:35:43
+ERROR: Requested id not in dynamixel network: 4
+
+Date: 25/03/2015
+Time: 11:35:43
+ERROR: Requested id not in dynamixel network: ]
+
+Date: 25/03/2015
+Time: 11:36:16
+KEY ERROR: Invalid key in JSON object: {"action":"createCar","actuators[]":["1","2","3","4"]}
+
+Date: 25/03/2015
+Time: 11:36:29
+ERROR: Requested id not in dynamixel network: [
+
+Date: 25/03/2015
+Time: 11:36:29
+ERROR: Requested id not in dynamixel network: 1
+
+Date: 25/03/2015
+Time: 11:36:29
+ERROR: Requested id not in dynamixel network: ,
+
+Date: 25/03/2015
+Time: 11:36:29
+ERROR: Requested id not in dynamixel network:  
+
+Date: 25/03/2015
+Time: 11:36:29
+ERROR: Requested id not in dynamixel network: 2
+
+Date: 25/03/2015
+Time: 11:36:29
+ERROR: Requested id not in dynamixel network: ,
+
+Date: 25/03/2015
+Time: 11:36:29
+ERROR: Requested id not in dynamixel network:  
+
+Date: 25/03/2015
+Time: 11:36:29
+ERROR: Requested id not in dynamixel network: 3
+
+Date: 25/03/2015
+Time: 11:36:29
+ERROR: Requested id not in dynamixel network: ,
+
+Date: 25/03/2015
+Time: 11:36:29
+ERROR: Requested id not in dynamixel network:  
+
+Date: 25/03/2015
+Time: 11:36:29
+ERROR: Requested id not in dynamixel network: 4
+
+Date: 25/03/2015
+Time: 11:36:29
+ERROR: Requested id not in dynamixel network: ]
+
+Date: 25/03/2015
+Time: 11:45:02
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 11:45:59
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 11:46:15
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 11:48:20
+KEY ERROR: Invalid key in JSON object: {"action":"moveCar","id":-1,"speed":"1","direction":0}
+
+Date: 25/03/2015
+Time: 11:48:20
+VALUE ERROR: Unable to parse json on string: {"action":"moveCar","id":-1,"speed":"2","direction":0}{"action":"moveCar","id":-1,"speed":"3","direction":0}{"action":"moveCar","id":-1,"speed":"4","direction":0}{"action":"moveCar","id":-1,"speed":"5","direction":0}
+
+Date: 25/03/2015
+Time: 11:52:47
+VALUE ERROR: Unable to parse json on string: {"action":"moveCar","id":1425,"speed":"-2","direction":0}{"action":"moveCar","id":1425,"speed":"-3","direction":0}{"action":"moveCar","id":1425,"speed":"-1","direction":0}
+
+Date: 25/03/2015
+Time: 11:53:03
+VALUE ERROR: Unable to parse json on string: {"action":"moveCar","id":1425,"speed":"9","direction":0}{"action":"moveCar","id":1425,"speed":"10","direction":0}{"action":"moveCar","id":1425,"speed":"5","direction":0}{"action":"moveCar","id":1425,"speed":"13","direction":0}{"action":"moveCar","id":1425,"speed":"19","direction":0}
+
+Date: 25/03/2015
+Time: 11:53:03
+VALUE ERROR: Unable to parse json on string: {"action":"moveCar","id":1425,"speed":"22","direction":0}{"action":"moveCar","id":1425,"speed":"25","direction":0}{"action":"moveCar","id":1425,"speed":"28","direction":0}{"action":"moveCar","id":1425,"speed":"30","direction":0}{"action":"moveCar","id":1425,"speed":"33","direction":0}
+
+Date: 25/03/2015
+Time: 11:53:03
+VALUE ERROR: Unable to parse json on string: {"action":"moveCar","id":1425,"speed":"36","direction":0}{"action":"moveCar","id":1425,"speed":"38","direction":0}{"action":"moveCar","id":1425,"speed":"39","direction":0}{"action":"moveCar","id":1425,"speed":"8","direction":0}{"action":"moveCar","id":1425,"speed":"40","direction":0}
+
+Date: 25/03/2015
+Time: 11:53:03
+VALUE ERROR: Unable to parse json on string: {"action":"moveCar","id":1425,"speed":"42","direction":0}{"action":"moveCar","id":1425,"speed":"43","direction":0}{"action":"moveCar","id":1425,"speed":"44","direction":0}{"action":"moveCar","id":1425,"speed":"45","direction":0}{"action":"moveCar","id":1425,"speed":"46","direction":0}
+
+Date: 25/03/2015
+Time: 11:53:09
+VALUE ERROR: Unable to parse json on string: {"action":"moveCar","id":1425,"speed":"56","direction":"60"}{"action":"moveCar","id":1425,"speed":"55","direction":"60"}{"action":"moveCar","id":1425,"speed":"54","direction":"60"}{"action":"moveCar","id":1425,"speed":"53","direction":"60"}{"action":"moveCar","id":1425,"speed":"52","direction":"60"}
+
+Date: 25/03/2015
+Time: 11:53:10
+VALUE ERROR: Unable to parse json on string: {"action":"moveCar","id":1425,"speed":"50","direction":"60"}{"action":"moveCar","id":1425,"speed":"51","direction":"60"}{"action":"moveCar","id":1425,"speed":"52","direction":"60"}
+
+Date: 25/03/2015
+Time: 11:53:10
+VALUE ERROR: Unable to parse json on string: {"action":"moveCar","id":1425,"speed":"43","direction":"60"}{"action":"moveCar","id":1425,"speed":"42","direction":"60"}
+
+Date: 25/03/2015
+Time: 11:53:10
+VALUE ERROR: Unable to parse json on string: {"action":"moveCar","id":1425,"speed":"35","direction":"60"}{"action":"moveCar","id":1425,"speed":"34","direction":"60"}
+
+Date: 25/03/2015
+Time: 11:53:10
+VALUE ERROR: Unable to parse json on string: {"action":"moveCar","id":1425,"speed":"32","direction":"60"}{"action":"moveCar","id":1425,"speed":"31","direction":"60"}
+
+Date: 25/03/2015
+Time: 11:53:10
+VALUE ERROR: Unable to parse json on string: {"action":"moveCar","id":1425,"speed":"29","direction":"60"}{"action":"moveCar","id":1425,"speed":"28","direction":"60"}
+
+Date: 25/03/2015
+Time: 11:53:10
+VALUE ERROR: Unable to parse json on string: {"action":"moveCar","id":1425,"speed":"26","direction":"60"}{"action":"moveCar","id":1425,"speed":"24","direction":"60"}
+
+Date: 25/03/2015
+Time: 11:53:16
+VALUE ERROR: Unable to parse json on string: {"action":"moveCar","id":1425,"speed":"0","direction":"0"}{"action":"moveCar","id":1425,"speed":"-1","direction":"0"}{"action":"moveCar","id":1425,"speed":"-2","direction":"0"}{"action":"moveCar","id":1425,"speed":"-3","direction":"0"}{"action":"moveCar","id":1Date: 25/03/2015
+Time: 11:55:41
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 11:55:57
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"10","direction":0}{"action":"moveCar","id":4635,"speed":"9","direction":0}{"action":"moveCar","id":4635,"speed":"11","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 171 (char 57 - 170)',)
+
+Date: 25/03/2015
+Time: 11:56:00
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"17","direction":0}{"action":"moveCar","id":4635,"speed":"18","direction":0}{"action":"moveCar","id":4635,"speed":"19","direction":0}{"action":"moveCar","id":4635,"speed":"20","direction":0}{"action":"moveCar","id":4635,"speed":"21","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 286 (char 57 - 285)',)
+
+Date: 25/03/2015
+Time: 11:56:05
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"34","direction":0}{"action":"moveCar","id":4635,"speed":"35","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 11:56:11
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"49","direction":0}{"action":"moveCar","id":4635,"speed":"48","direction":0}{"action":"moveCar","id":4635,"speed":"47","direction":0}{"action":"moveCar","id":4635,"speed":"46","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 229 (char 57 - 228)',)
+
+Date: 25/03/2015
+Time: 11:56:17
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"38","direction":0}{"action":"moveCar","id":4635,"speed":"37","direction":0}{"action":"moveCar","id":4635,"speed":"36","direction":0}{"action":"moveCar","id":4635,"speed":"35","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 229 (char 57 - 228)',)
+
+Date: 25/03/2015
+Time: 11:56:18
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"36","direction":0}{"action":"moveCar","id":4635,"speed":"37","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 11:56:19
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"48","direction":0}{"action":"moveCar","id":4635,"speed":"46","direction":0}{"action":"moveCar","id":4635,"speed":"45","direction":0}{"action":"moveCar","id":4635,"speed":"43","direction":0}{"action":"moveCar","id":4635,"speed":"42","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 286 (char 57 - 285)',)
+
+Date: 25/03/2015
+Time: 11:56:19
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"38","direction":0}{"action":"moveCar","id":4635,"speed":"36","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 11:56:19
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"21","direction":0}{"action":"moveCar","id":4635,"speed":"19","direction":0}{"action":"moveCar","id":4635,"speed":"18","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 172 (char 57 - 171)',)
+
+Date: 25/03/2015
+Time: 11:56:19
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"16","direction":0}{"action":"moveCar","id":4635,"speed":"15","direction":0}{"action":"moveCar","id":4635,"speed":"14","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 172 (char 57 - 171)',)
+
+Date: 25/03/2015
+Time: 11:56:19
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"16","direction":0}{"action":"moveCar","id":4635,"speed":"24","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 11:56:19
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"23","direction":0}{"action":"moveCar","id":4635,"speed":"25","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 11:56:19
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"26","direction":0}{"action":"moveCar","id":4635,"speed":"27","direction":0}{"action":"moveCar","id":4635,"speed":"28","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 172 (char 57 - 171)',)
+
+Date: 25/03/2015
+Time: 11:56:19
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"32","direction":0}{"action":"moveCar","id":4635,"speed":"33","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 11:56:19
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"35","direction":0}{"action":"moveCar","id":4635,"speed":"37","direction":0}{"action":"moveCar","id":4635,"speed":"17","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 172 (char 57 - 171)',)
+
+Date: 25/03/2015
+Time: 11:56:19
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"41","direction":0}{"action":"moveCar","id":4635,"speed":"42","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 11:56:19
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"44","direction":0}{"action":"moveCar","id":4635,"speed":"46","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 11:56:20
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"46","direction":0}{"action":"moveCar","id":4635,"speed":"45","direction":0}{"action":"moveCar","id":4635,"speed":"44","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 172 (char 57 - 171)',)
+
+Date: 25/03/2015
+Time: 11:56:20
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"48","direction":0}{"action":"moveCar","id":4635,"speed":"50","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 11:56:20
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"52","direction":0}{"action":"moveCar","id":4635,"speed":"19","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 11:56:21
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"55","direction":0}{"action":"moveCar","id":4635,"speed":"56","direction":0}{"action":"moveCar","id":4635,"speed":"57","direction":0}{"action":"moveCar","id":4635,"speed":"58","direction":0}{"action":"moveCar","id":4635,"speed":"59","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 286 (char 57 - 285)',)
+
+Date: 25/03/2015
+Time: 11:56:26
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"59","direction":0}{"action":"moveCar","id":4635,"speed":"58","direction":0}{"action":"moveCar","id":4635,"speed":"57","direction":0}{"action":"moveCar","id":4635,"speed":"56","direction":0}{"action":"moveCar","id":4635,"speed":"55","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 286 (char 57 - 285)',)
+
+Date: 25/03/2015
+Time: 11:56:27
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"53","direction":0}{"action":"moveCar","id":4635,"speed":"54","direction":0}{"action":"moveCar","id":4635,"speed":"55","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 172 (char 57 - 171)',)
+
+Date: 25/03/2015
+Time: 11:56:35
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":4635,"speed":"46","direction":0}{"action":"moveCar","id":4635,"speed":"45","direction":0}{"action":"moveCar","id":4635,"speed":"44","direction":0}{"action":Date: 25/03/2015
+Time: 12:59:48
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:00:24
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":1655,"speed":"0","direction":0}{"action":"moveCar","id":1655,"speed":"1","direction":0}{"action":"moveCar","id":1655,"speed":"2","direction":0}{"action":"moveCar","id":1655,"speed":"3","direction":0}{"action":"moveCar","id":1655,"speed":"4","direction":0}
+Error details: ValueError('Extra data: line 1 column 57 - line 1 column 281 (char 56 - 280)',)
+
+Date: 25/03/2015
+Time: 13:00:24
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":1655,"speed":"6","direction":0}{"action":"moveCar","id":1655,"speed":"7","direction":0}
+Error details: ValueError('Extra data: line 1 column 57 - line 1 column 113 (char 56 - 112)',)
+
+Date: 25/03/2015
+Time: 13:00:56
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":354,"speed":"5","direction":0}{"action":"moveCar","id":354,"speed":"6","direction":0}{"action":"moveCar","id":354,"speed":"9","direction":0}{"action":"moveCar","id":354,"speed":"11","direction":0}{"action":"moveCar","id":354,"speed":"16","direction":0}
+Error details: ValueError('Extra data: line 1 column 56 - line 1 column 278 (char 55 - 277)',)
+
+Date: 25/03/2015
+Time: 13:00:56
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":354,"speed":"33","direction":0}{"action":"moveCar","id":354,"speed":"40","direction":0}
+Error details: ValueError('Extra data: line 1 column 57 - line 1 column 113 (char 56 - 112)',)
+
+Date: 25/03/2015
+Time: 13:00:56
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":354,"speed":"42","direction":0}{"action":"moveCar","id":354,"speed":"45","direction":0}{"action":"moveCar","id":354,"speed":"46","direction":0}
+Error details: ValueError('Extra data: line 1 column 57 - line 1 column 169 (char 56 - 168)',)
+
+Date: 25/03/2015
+Time: 13:00:56
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":354,"speed":"49","direction":0}{"action":"moveCar","id":354,"speed":"50","direction":0}
+Error details: ValueError('Extra data: line 1 column 57 - line 1 column 113 (char 56 - 112)',)
+
+Date: 25/03/2015
+Time: 13:00:57
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":354,"speed":"48","direction":0}{"action":"moveCar","id":354,"speed":"49","direction":0}
+Error details: ValueError('Extra data: line 1 column 57 - line 1 column 113 (char 56 - 112)',)
+
+Date: 25/03/2015
+Time: 13:00:57
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":354,"speed":"54","direction":0}{"action":"moveCar","id":354,"speed":"56","direction":0}{"action":"moveCar","id":354,"speed":"58","direction":0}
+Error details: ValueError('Extra data: line 1 column 57 - line 1 column 169 (char 56 - 168)',)
+
+Date: 25/03/2015
+Time: 13:00:57
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":354,"speed":"66","direction":0}{"action":"moveCar","id":354,"speed":"67","direction":0}
+Error details: ValueError('Extra data: line 1 column 57 - line 1 column 113 (char 56 - 112)',)
+
+Date: 25/03/2015
+Time: 13:00:58
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":354,"speed":"52","direction":0}{"action":"moveCar","id":354,"speed":"54","direction":0}
+Error details: ValueError('Extra data: line 1 column 57 - line 1 column 113 (char 56 - 112)',)
+
+Date: 25/03/2015
+Time: 13:00:58
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":354,"speed":"20","direction":0}{"action":"moveCar","id":354,"speed":"16","direction":0}
+Error details: ValueError('Extra data: line 1 column 57 - line 1 column 113 (char 56 - 112)',)
+
+Date: 25/03/2015
+Time: 13:00:58
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":354,"speed":"14","direction":0}{"action":"moveCar","id":354,"speed":"13","direction":0}{"action":"moveCar","id":354,"speed":"12","direction":0}
+Error details: ValueError('Extra data: line 1 column 57 - line 1 column 169 (char 56 - 168)',)
+
+Date: 25/03/2015
+Time: 13:00:58
+VALUE ERROR: Unable to parse json in string: {Date: 25/03/2015
+Time: 13:06:16
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:06:28
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":1,"speed":"10","direction":0}{"action":"moveCar","id":1,"speed":"15","direction":0}{"action":"moveCar","id":1,"speed":"20","direction":0}{"action":"moveCar","id":1,"speed":"25","direction":0}{"action":"moveCar","id":1,"speed":"30","direction":0}
+Error details: ValueError('Extra data: line 1 column 55 - line 1 column 271 (char 54 - 270)',)
+
+Date: 25/03/2015
+Time: 13:06:41
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":1,"speed":"45","direction":"4"}{"action":"moveCar","id":1,"speed":"45","direction":"6"}{"action":"moveCar","id":1,"speed":"45","direction":"7"}{"action":"moveCar","id":1,"speed":"45","direction":"8"}
+Error details: ValueError('Extra data: line 1 column 57 - line 1 column 225 (char 56 - 224)',)
+
+Date: 25/03/2015
+Time: 13:06:43
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":1,"speed":"45","direction":"45"}{"action":"moveCar","id":1,"speed":"45","direction":"46"}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 13:06:43
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":1,"speed":"45","direction":"53"}{"action":"moveCar","id":1,"speed":"45","direction":"54"}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 13:06:43
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":1,"speed":"45","direction":"56"}{"action":"moveCar","id":1,"speed":"45","direction":"57"}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 13:06:43
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":1,"speed":"45","direction":"61"}{"action":"moveCar","id":1,"speed":"45","direction":"62"}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 13:06:44
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":1,"speed":"45","direction":"39"}{"action":"moveCar","id":1,"speed":"45","direction":"38"}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 13:06:45
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":1,"speed":"45","direction":"-22"}{"action":"moveCar","id":1,"speed":"45","direction":"-23"}{"action":"moveCar","id":1,"speed":"45","direction":"-25"}{"action":"moveCar","id":1,"speed":"45","direction":"-26"}{"action":"moveCar","id":1,"speed":"45","direction":"-29"}
+Error details: ValueError('Extra data: line 1 column 59 - line 1 column 291 (char 58 - 290)',)
+
+Date: 25/03/2015
+Time: 13:06:47
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":1,"speed":"45","direction":"-66"}{"action":"moveCar","id":1,"speed":"45","direction":"-65"}{"action":"moveCar","id":1,"speed":"45","direction":"-64"}{"action":"moveCar","id":1,"speed":"45","direction":"-62"}{"action":"moveCar","id":1,"speed":"45","direction":"-60"}
+Error details: ValueError('Extra data: line 1 column 59 - line 1 column 291 (char 58 - 290)',)
+
+Date: 25/03/2015
+Time: 13:06:47
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":1,"speed":"45","direction":"-59"}{"action":"moveCar","id":1,"speed":"45","direction":"-57"}{"action":"moveCar","id":1,"speed":"45","direction":"-56"}{"action":"moveCar","id":1,"speed":"45","direction":"-54"}{"action":"moveCar","id":1,"speed":"45","direction":"-53"}{"action":"moveCar","id":1,"speed":"45","direction":"-51"}
+Error details: ValueError('Extra data: line 1 column 59 - line 1 column 349 (char 58 - 348)',)
+
+Date: 25/03/2015
+Time: 13:06:47
+VALUE ERROR: Unable to parse json in string: {"action":"moveCar","id":1,"speed":"45","direction":"-50"}{"action":"moveCar","id":1,"speed":"45","direction":"-48"}{"action":"moveCar","id":1,"speed":"45","direction":"-46"}{"action":"moveCar","id":1,"Date: 25/03/2015
+Time: 13:08:19
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:19:34
+VALUE ERROR: Unable to parse json in string: {"action":"info","actuatorId":"2"}{"action":"info","actuatorId":"2"}{"action":"info","actuatorId":"2"}{"action":"info","actuatorId":"2"}
+Error details: ValueError('Extra data: line 1 column 35 - line 1 column 137 (char 34 - 136)',)
+
+Date: 25/03/2015
+Time: 13:19:34
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:34
+VALUE ERROR: Unable to parse json in string: {"action":"info","actuatorId":"2"}{"action":"info","actuatorId":"2"}
+Error details: ValueError('Extra data: line 1 column 35 - line 1 column 69 (char 34 - 68)',)
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+VALUE ERROR: Unable to parse json in string: {"action":"info","actuatorId":"2"}{"action":"info","actuatorId":"2"}
+Error details: ValueError('Extra data: line 1 column 35 - line 1 column 69 (char 34 - 68)',)
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+VALUE ERROR: Unable to parse json in string: {"action":"info","actuatorId":"2"}{"action":"info","actuatorId":"2"}{"action":"info","actuatorId":"2"}
+Error details: ValueError('Extra data: line 1 column 35 - line 1 column 103 (char 34 - 102)',)
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+VALUE ERROR: Unable to parse json in string: {"action":"info","actuatorId":"2"}{"action":"info","actuatorId":"2"}{"action":"info","actuatorId":"2"}
+Error details: ValueError('Extra data: line 1 column 35 - line 1 column 103 (char 34 - 102)',)
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+VALUE ERROR: Unable to parse json in string: {"action":"info","actuatorId":"2"}{"action":"info","actuatorId":"2"}
+Error details: ValueError('Extra data: line 1 column 35 - line 1 column 69 (char 34 - 68)',)
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+VALUE ERROR: Unable to parse json in string: {"action":"info","actuatorId":"2"}{"action":"info","actuatorId":"2"}
+Error details: ValueError('Extra data: line 1 column 35 - line 1 column 69 (char 34 - 68)',)
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+VALUE ERROR: Unable to parse json in string: {"action":"info","actuatorId":"2"}{"action":"info","actuatorId":"2"}{"action":"info","actuatorId":"2"}{"action":"info","actuatorId":"2"}
+Error details: ValueError('Extra data: line 1 column 35 - line 1 column 137 (char 34 - 136)',)
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:35
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:36
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:38
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:38
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:39
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:40
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:42
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:43
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:43
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:44
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:46
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:47
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:47
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:48
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:49
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:51
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:51
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:52
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:53
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:55
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:56
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:56
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:57
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:19:59
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:00
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:01
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:01
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:03
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:04
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:05
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:05
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:07
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:08
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:08
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:10
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:12
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:12
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:14
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:14
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:16
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:17
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:17
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:18
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 13:20:20
+UNEXPECTED ERROR: Recieved data might be cDate: 25/03/2015
+Time: 13:30:19
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:34:38
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:35:43
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:36:10
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:36:11
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:41
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:42
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:43
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:44
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:45
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:46
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:47
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:48
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:49
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:50
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:51
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:52
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:53
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:54
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:55
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:56
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:57
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:58
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:42:59
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:00
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:01
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:02
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:03
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:04
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:05
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:06
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:07
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:08
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:09
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:10
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:11
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:12
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:13
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:14
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:15
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:16
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:17
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:18
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:19
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:20
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:21
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:22
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:23
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:24
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:25
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:26
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:27
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:28
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:29
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:30
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:31
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:32
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:33
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:34
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:35
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:36
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:37
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:38
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:39
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:40
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:41
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:42
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:43
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:44
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:45
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:46
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:47
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:48
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:49
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:50
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:51
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:52
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:43:53
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:00
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:01
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:02
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:03
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:04
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:05
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:06
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:07
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:08
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:09
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:10
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:11
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:12
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:13
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:14
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:15
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:16
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:17
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:18
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:19
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:20
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:21
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:22
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:23
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:24
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:25
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:26
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:27
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:28
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:29
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:30
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:31
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:32
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:33
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:34
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:35
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:36
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:37
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:38
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:39
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:40
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:41
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:42
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:43
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:44
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:45
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:46
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:47
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:48
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:49
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:50
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:51
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:52
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:53
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:54
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:55
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:56
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:57
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:58
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:44:59
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:00
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:01
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:02
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:03
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:04
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:05
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:06
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:07
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:08
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:09
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:10
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:11
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:12
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:13
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:14
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:15
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:16
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:17
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:18
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:19
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:20
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:21
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:22
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:23
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:24
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:25
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:26
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:27
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:28
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:29
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:30
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:31
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:32
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:33
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:34
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:35
+ERROR: Failed to connect to remote server, retrying
+
+Date: 25/03/2015
+Time: 13:45:36
+Date: 25/03/2015
+Time: 14:17:41
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 14:19:52
+VALUE ERROR: Unable to parse json in string: {"action":"info","actuatorId":"2"}{"action":"info","actuatorId":"2"}{"action":"info","actuatorId":"2"}
+Error details: ValueError('Extra data: line 1 column 35 - line 1 column 103 (char 34 - 102)',)
+
+Date: 25/03/2015
+Time: 14:24:02
+UNEXPECTED ERROR: Recieved data might be corrupt
+
+Date: 25/03/2015
+Time: 14:37:54
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"15","direction":0}{"action":"moveDevice","id":5,"speed":"20","direction":0}{"action":"moveDevice","id":5,"speed":"35","direction":0}{"action":"moveDevice","id":5,"speed":"40","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 229 (char 57 - 228)',)
+
+Date: 25/03/2015
+Time: 14:38:17
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"45","direction":0}{"action":"moveDevice","id":5,"speed":"30","direction":0}{"action":"moveDevice","id":5,"speed":"5","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 171 (char 57 - 170)',)
+
+Date: 25/03/2015
+Time: 14:38:17
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"-10","direction":0}{"action":"moveDevice","id":5,"speed":"-20","direction":0}{"action":"moveDevice","id":5,"speed":"-25","direction":0}
+Error details: ValueError('Extra data: line 1 column 59 - line 1 column 175 (char 58 - 174)',)
+
+Date: 25/03/2015
+Time: 14:38:18
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"-55","direction":0}{"action":"moveDevice","id":5,"speed":"-60","direction":0}
+Error details: ValueError('Extra data: line 1 column 59 - line 1 column 117 (char 58 - 116)',)
+
+Date: 25/03/2015
+Time: 14:38:27
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"25","direction":0}{"action":"moveDevice","id":5,"speed":"30","direction":0}{"action":"moveDevice","id":5,"speed":"35","direction":0}{"action":"moveDevice","id":5,"speed":"40","direction":0}{"action":"moveDevice","id":5,"speed":"35","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 286 (char 57 - 285)',)
+
+Date: 25/03/2015
+Time: 14:38:27
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"25","direction":0}{"action":"moveDevice","id":5,"speed":"20","direction":0}{"action":"moveDevice","id":5,"speed":"15","direction":0}{"action":"moveDevice","id":5,"speed":"20","direction":0}{"action":"moveDevice","id":5,"speed":"25","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 286 (char 57 - 285)',)
+
+Date: 25/03/2015
+Time: 14:38:27
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"40","direction":0}{"action":"moveDevice","id":5,"speed":"45","direction":0}{"action":"moveDevice","id":5,"speed":"50","direction":0}{"action":"moveDevice","id":5,"speed":"60","direction":0}{"action":"moveDevice","id":5,"speed":"65","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 286 (char 57 - 285)',)
+
+Date: 25/03/2015
+Time: 14:38:27
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"70","direction":0}{"action":"moveDevice","id":5,"speed":"75","direction":0}{"action":"moveDevice","id":5,"speed":"80","direction":0}{"action":"moveDevice","id":5,"speed":"75","direction":0}{"action":"moveDevice","id":5,"speed":"70","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 286 (char 57 - 285)',)
+
+Date: 25/03/2015
+Time: 14:38:27
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"55","direction":0}{"action":"moveDevice","id":5,"speed":"50","direction":0}{"action":"moveDevice","id":5,"speed":"45","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 172 (char 57 - 171)',)
+
+Date: 25/03/2015
+Time: 14:38:27
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"40","direction":0}{"action":"moveDevice","id":5,"speed":"45","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 14:38:28
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"55","direction":0}{"action":"moveDevice","id":5,"speed":"60","direction":0}{"action":"moveDevice","id":5,"speed":"65","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 172 (char 57 - 171)',)
+
+Date: 25/03/2015
+Time: 14:38:28
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"50","direction":0}{"action":"moveDevice","id":5,"speed":"45","direction":0}{"action":"moveDevice","id":5,"speed":"40","direction":0}{"action":"moveDevice","id":5,"speed":"35","direction":0}{"action":"moveDevice","id":5,"speed":"30","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 286 (char 57 - 285)',)
+
+Date: 25/03/2015
+Time: 14:38:28
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"40","direction":0}{"action":"moveDevice","id":5,"speed":"45","direction":0}{"action":"moveDevice","id":5,"speed":"50","direction":0}{"action":"moveDevice","id":5,"speed":"55","direction":0}{"action":"moveDevice","id":5,"speed":"60","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 286 (char 57 - 285)',)
+
+Date: 25/03/2015
+Time: 14:38:29
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"65","direction":0}{"action":"moveDevice","id":5,"speed":"70","direction":0}{"action":"moveDevice","id":5,"speed":"75","direction":0}{"action":"moveDevice","id":5,"speed":"80","direction":0}{"action":"moveDevice","id":5,"speed":"85","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 286 (char 57 - 285)',)
+
+Date: 25/03/2015
+Time: 14:38:29
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"70","direction":0}{"action":"moveDevice","id":5,"speed":"65","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 14:38:29
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"60","direction":0}{"action":"moveDevice","id":5,"speed":"65","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 14:38:29
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"75","direction":0}{"action":"moveDevice","id":5,"speed":"80","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 14:38:29
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"75","direction":0}{"action":"moveDevice","id":5,"speed":"80","direction":0}{"action":"moveDevice","id":5,"speed":"85","direction":0}{"action":"moveDevice","id":5,"speed":"90","direction":0}{"action":"moveDevice","id":5,"speed":"95","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 286 (char 57 - 285)',)
+
+Date: 25/03/2015
+Time: 14:38:30
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"90","direction":0}{"action":"moveDevice","id":5,"speed":"80","direction":0}{"action":"moveDevice","id":5,"speed":"75","direction":0}{"action":"moveDevice","id":5,"speed":"70","direction":0}{"action":"moveDevice","id":5,"speed":"60","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 286 (char 57 - 285)',)
+
+Date: 25/03/2015
+Time: 14:38:31
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,"speed":"65","direction":0}{"action":"moveDevice","id":5,"speed":"60","direction":0}
+Error details: ValueError('Extra data: line 1 column 58 - line 1 column 115 (char 57 - 114)',)
+
+Date: 25/03/2015
+Time: 14:38:34
+VALUE ERROR: Unable to parse json in string: {"action":"moveDevice","id":5,Date: 08/04/2015
+Time: 00:02:34
+ERROR: Failed to connect to remote server, retrying
+
+Date: 08/04/2015
+Time: 00:02:35
+ERROR: Failed to connect to remote server, retrying
+
+Date: 08/04/2015
+Time: 00:02:36
+ERROR: Failed to connect to remote server, retrying
+
+Date: 08/04/2015
+Time: 00:03:27
+ERROR: Failed to connect to remote server, retrying
+
+Date: 08/04/2015
+Time: 00:03:28
+ERROR: Failed to connect to remote server, retrying
+

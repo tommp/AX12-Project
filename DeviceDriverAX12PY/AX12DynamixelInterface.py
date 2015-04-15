@@ -13,9 +13,7 @@ from random import randint
 
 def main(settings):
 
-	SERVER_IP = 'vsop.online.ntnu.no'
-	#SERVER_IP = '78.91.4.158'
-	#SERVER_IP = '78.91.51.239'
+	SERVER_IP = settings['ip']
 	SERVER_PORT = 9001
 	SERVER_CONN = (SERVER_IP, SERVER_PORT)
 
@@ -184,7 +182,8 @@ def validateInput(userInput, rangeMin, rangeMax):
 	return inTest
 
 if __name__ == '__main__':
-	
+	DEFAULT_SERVER_IP = 'vsop.online.ntnu.no'
+	DEFAULT_SERVER_PORT = 9001
 	parser = optparse.OptionParser()
 	parser.add_option("-c", "--clean",
 					  action="store_true", dest="clean", default=False,
@@ -229,6 +228,8 @@ if __name__ == '__main__':
 			portChoice = raw_input(portPrompt)
 	
 		settings['port'] = portChoice
+		settings['ip'] = DEFAULT_SERVER_IP
+		settings['serverPort'] = DEFAULT_SERVER_PORT
 
 		# Device name
 		deviceName = ""
@@ -259,7 +260,6 @@ if __name__ == '__main__':
 			highestServoId = validateInput(hsiTest, 1, 255)
 		
 		settings['highestServoId'] = highestServoId
-
 
 		highestServoId = settings['highestServoId']
 

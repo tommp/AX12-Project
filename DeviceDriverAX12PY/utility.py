@@ -138,9 +138,15 @@ class DeviceController:
 
 		# Establish a serial connection to the dynamixel network.
 		# This usually requires a USB2Dynamixel
-		self.serial = dynamixel.SerialStream(port=settings['port'],
-										baudrate=settings['baudRate'],
-										timeout=1)
+		try:
+			self.serial = dynamixel.SerialStream(port=settings['port'],
+											baudrate=settings['baudRate'],
+											timeout=1)
+		except:
+			errorlog.write("ERROR: No Dynamixels Found!\n")
+			printdt("No Dynamixels Found!")
+			device_controller.restart_program()
+
 		# Instantiate our network object
 		self.net = dynamixel.DynamixelNetwork(self.serial)
 
@@ -153,7 +159,7 @@ class DeviceController:
 		if not self.net.get_dynamixels():
 			errorlog.write("ERROR: No Dynamixels Found!\n")
 			printdt("No Dynamixels Found!")
-			sys.exit(0)
+			device_controller.restart_program()
 		else:
 			printdt("Dynamixels found, network initialized")
 
