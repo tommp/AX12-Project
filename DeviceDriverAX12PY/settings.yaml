@@ -1,0 +1,7 @@
+baudRate: 1000000
+highestServoId: 4
+ip: 'vsop.online.ntnu.no'
+name: ruls
+port: /dev/ttyUSB0
+serverPort: 9001
+servoIds: [1, 2, 3, 4]
