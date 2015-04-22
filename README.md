@@ -1,2 +1,2 @@
 # EIT
-API for controlling AX-12
+API for controlling AX12-Dynamixels, includes a remote server for communication between devices and applications.
